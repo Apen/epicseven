@@ -92,14 +92,24 @@
             </div>
             <div class="col-md-2">
                 <div class="form-group">
-                    <label class="">
-                        <input type="checkbox" v-model="enemies.first.outspeed"/> Outspeed me?
+                    <label>
+                        <input type="checkbox" v-model="enemies.first.outspeed"/> Outspeed?
                     </label>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" v-model="enemies.first.counter"/> <img src="assets/images/Counter.png"/>
+                    </label>
+                    <label>
+                        <input type="checkbox" v-model="enemies.first.immunity"/> <img src="assets/images/Immunity.png"/>
+                    </label>
+                </div>
+            </div>
+            <div class="col-md-9">
                 <div class="form-group">
                     <input type="text" v-model="enemies.first.infos" class="form-control" placeholder="Extra infos..."/>
                 </div>
@@ -145,14 +155,24 @@
             </div>
             <div class="col-md-2">
                 <div class="form-group">
-                    <label class="">
-                        <input type="checkbox" v-model="enemies.second.outspeed"/> Outspeed me?
+                    <label>
+                        <input type="checkbox" v-model="enemies.second.outspeed"/> Outspeed?
                     </label>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" v-model="enemies.second.counter"/> <img src="assets/images/Counter.png"/>
+                    </label>
+                    <label>
+                        <input type="checkbox" v-model="enemies.second.immunity"/> <img src="assets/images/Immunity.png"/>
+                    </label>
+                </div>
+            </div>
+            <div class="col-md-9">
                 <div class="form-group">
                     <input type="text" v-model="enemies.second.infos" class="form-control" placeholder="Extra infos..."/>
                 </div>
@@ -198,14 +218,24 @@
             </div>
             <div class="col-md-2">
                 <div class="form-group">
-                    <label class="">
-                        <input type="checkbox" v-model="enemies.third.outspeed"/> Outspeed me?
+                    <label>
+                        <input type="checkbox" v-model="enemies.third.outspeed"/> Outspeed?
                     </label>
                 </div>
             </div>
         </div>
         <div class="row mt-3">
-            <div class="col-md-12">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" v-model="enemies.third.counter"/> <img src="assets/images/Counter.png"/>
+                    </label>
+                    <label>
+                        <input type="checkbox" v-model="enemies.third.immunity"/> <img src="assets/images/Immunity.png"/>
+                    </label>
+                </div>
+            </div>
+            <div class="col-md-9">
                 <div class="form-group">
                     <input type="text" v-model="enemies.third.infos" class="form-control" placeholder="Extra infos..."/>
                 </div>

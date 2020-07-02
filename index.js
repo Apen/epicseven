@@ -55,6 +55,8 @@ var app = new Vue({
                     let cr = enemy.outspeed === true ? parseInt(enemy.cr) + 100 : enemy.cr;
                     content += ' - ' + Math.round((cr * this.firstHero.speed) / 100) + ' speed';
                 }
+                content += enemy.counter ? ' - Counter set' : '';
+                content += enemy.immunity ? ' - Immunity set' : '';
                 content += enemy.infos ? ' - ' + enemy.infos : '';
                 content += "\r\n";
             }
