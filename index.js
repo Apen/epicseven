@@ -55,6 +55,9 @@ var app = new Vue({
                 $('#report').select();
                 document.execCommand("copy");
             }
+        },
+        resetForm: function () {
+            document.location.reload(true);
         }
     }
 });
