@@ -1,5 +1,3 @@
-import {characters} from "./characters.js"
-import {artefacts} from "./artefacts.js"
 import {ComponentSelectCharacter} from "./components/select-character.js"
 import {ComponentSelectArtefact} from "./components/select-artefact.js"
 
@@ -19,9 +17,7 @@ var app = new Vue({
             second: {},
             third: {},
         },
-        report: '',
-        characters: characters,
-        artefacts: artefacts,
+        report: ''
     },
     watch: {
         'firstHero.name': function (val, oldVal) {
