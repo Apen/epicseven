@@ -12,9 +12,21 @@ var app = new Vue({
         artefacts: artefacts,
     },
     watch: {
+        'firstHero.name': function () {
+            this.firstHero.speed = '';
+        },
         firstHero: {
             deep: true,
             handler(val) {
+                if (val.name) {
+                    if (val.speed) {
+                        localStorage.setItem(val.name, val.speed);
+                    } else {
+                        if (localStorage.getItem(val.name)) {
+                            val.speed = localStorage.getItem(val.name);
+                        }
+                    }
+                }
                 this.updateReport();
             }
         },
@@ -27,7 +39,6 @@ var app = new Vue({
     },
     methods: {
         updateReport: function () {
-            console.log(this.enemies.first);
             this.report = '';
             this.report += this.updateLine(this.enemies.first);
             this.report += this.updateLine(this.enemies.second);
@@ -47,7 +58,6 @@ var app = new Vue({
                 content += enemy.infos ? ' - ' + enemy.infos : '';
                 content += "\r\n";
             }
-            console.log(content);
             return content;
         },
         copyToClipboard: function () {
