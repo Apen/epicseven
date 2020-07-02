@@ -6,23 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
     <title>Epic Seven Helpers</title>
-    <!-- Required Stylesheets -->
-    <link
-            type="text/css"
-            rel="stylesheet"
-            href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    />
-    <link
-            type="text/css"
-            rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.18/dist/css/bootstrap-select.min.css"
-    />
-    <!-- Load polyfills to support older browsers -->
+    <link type="text/css" rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
+    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.18/dist/css/bootstrap-select.min.css"/>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es2015%2CIntersectionObserver"></script>
-    <!-- Required scripts -->
     <script src="https://unpkg.com/jquery@latest/dist/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/vue@latest/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.18/dist/js/bootstrap-select.min.js"></script>
 </head>
@@ -36,11 +25,7 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="form-group">
-                    <select v-model="firstHero.name" class="selectpicker" title="Your first hero" data-live-search="true">
-                        <option v-for="item in characters" :value="item.name">
-                            {{item.name}}
-                        </option>
-                    </select>
+                    <select-character v-model="firstHero.name" title="Your first hero"></select-character>
                 </div>
             </div>
             <div class="col-md-3">
@@ -58,20 +43,12 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="form-group">
-                    <select v-model="enemies.first.name" class="selectpicker" title="First hero" data-live-search="true">
-                        <option v-for="item in characters" :value="item.name">
-                            {{item.name}}
-                        </option>
-                    </select>
+                    <select-character v-model="enemies.first.name" title="First hero"></select-character>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="form-group">
-                    <select v-model="enemies.first.artefact" class="selectpicker" title="First artefact" data-live-search="true">
-                        <option v-for="item in artefacts" :value="item.name">
-                            {{item.name}}
-                        </option>
-                    </select>
+                    <select-artefact v-model="enemies.first.artefact" title="First artefact"></select-artefact>
                 </div>
             </div>
             <div class="col-md-2">
@@ -121,20 +98,12 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="form-group">
-                    <select v-model="enemies.second.name" class="selectpicker" title="Second hero" data-live-search="true">
-                        <option v-for="item in characters" :value="item.name">
-                            {{item.name}}
-                        </option>
-                    </select>
+                    <select-character v-model="enemies.second.name" title="Second hero"></select-character>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="form-group">
-                    <select v-model="enemies.second.artefact" class="selectpicker" title="Second artefact" data-live-search="true">
-                        <option v-for="item in artefacts" :value="item.name">
-                            {{item.name}}
-                        </option>
-                    </select>
+                    <select-artefact v-model="enemies.second.artefact" title="Second artefact"></select-artefact>
                 </div>
             </div>
             <div class="col-md-2">
@@ -184,20 +153,12 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="form-group">
-                    <select v-model="enemies.third.name" class="selectpicker" title="Third hero" data-live-search="true">
-                        <option v-for="item in characters" :value="item.name">
-                            {{item.name}}
-                        </option>
-                    </select>
+                    <select-character v-model="enemies.third.name" title="Third hero"></select-character>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="form-group">
-                    <select v-model="enemies.third.artefact" class="selectpicker" title="Third artefact" data-live-search="true">
-                        <option v-for="item in artefacts" :value="item.name">
-                            {{item.name}}
-                        </option>
-                    </select>
+                    <select-artefact v-model="enemies.third.artefact" title="Third artefact"></select-artefact>
                 </div>
             </div>
             <div class="col-md-2">
@@ -261,8 +222,6 @@
     </div>
 
 </div>
-<script src="characters.js"></script>
-<script src="artefacts.js"></script>
-<script src="index.js"></script>
+<script src="index.js" type="module"></script>
 </body>
 </html>
