@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>Epic Seven Helpers</title>
+    <!-- Required Stylesheets -->
+    <link
+            type="text/css"
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <link
+            type="text/css"
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.18/dist/css/bootstrap-select.min.css"
+    />
+    <!-- Load polyfills to support older browsers -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es2015%2CIntersectionObserver"></script>
+    <!-- Required scripts -->
+    <script src="https://unpkg.com/jquery@latest/dist/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/vue@latest/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.18/dist/js/bootstrap-select.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <div class="container" style="margin-top:50px;">
+        <h1>Guild war reporting</h1>
+
+        <hr/>
+
+        <div class="row">
+            <div class="col-md-3">
+                <select v-model="firstHero.name" class="selectpicker" title="Your first hero" data-live-search="true">
+                    <option v-for="item in characters" :value="item.name">
+                        {{item.name}}
+                    </option>
+                </select>
+            </div>
+            <div class="input-group col-md-3">
+                <input v-model="firstHero.speed" type="number" min="0" class="form-control"/>
+                <div class="input-group-append">
+                    <span class="input-group-text">Speed</span>
+                </div>
+            </div>
+        </div>
+
+        <hr/>
+
+        <div class="row">
+            <div class="col-md-3">
+                <select v-model="enemies.first.name" class="selectpicker" title="First hero" data-live-search="true">
+                    <option v-for="item in characters" :value="item.name">
+                        {{item.name}}
+                    </option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <select v-model="enemies.first.artefact" class="selectpicker" title="First artefact" data-live-search="true">
+                    <option v-for="item in artefacts" :value="item.name">
+                        {{item.name}}
+                    </option>
+                </select>
+            </div>
+            <div class="input-group col-md-2">
+                <input v-model="enemies.first.hp" type="number" min="0" class="form-control"/>
+                <div class="input-group-append">
+                    <span class="input-group-text">HP</span>
+                </div>
+            </div>
+            <div class="input-group col-md-2">
+                <input v-model="enemies.first.cr" type="number" min="0" class="form-control"/>
+                <div class="input-group-append">
+                    <span class="input-group-text">% CR</span>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <label class="">
+                    <input type="checkbox" v-model="enemies.first.outspeed"/> Outspeed me?
+                </label>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-12">
+                <input type="text" v-model="enemies.first.infos" class="form-control" placeholder="Extra infos..."/>
+            </div>
+        </div>
+
+        <hr/>
+
+        <div class="row">
+            <div class="col-md-3">
+                <select v-model="enemies.second.name" class="selectpicker" title="Second hero" data-live-search="true">
+                    <option v-for="item in characters" :value="item.name">
+                        {{item.name}}
+                    </option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <select v-model="enemies.second.artefact" class="selectpicker" title="Second artefact" data-live-search="true">
+                    <option v-for="item in artefacts" :value="item.name">
+                        {{item.name}}
+                    </option>
+                </select>
+            </div>
+            <div class="input-group col-md-2">
+                <input v-model="enemies.second.hp" type="number" min="0" class="form-control"/>
+                <div class="input-group-append">
+                    <span class="input-group-text">HP</span>
+                </div>
+            </div>
+            <div class="input-group col-md-2">
+                <input v-model="enemies.second.cr" type="number" min="0" class="form-control"/>
+                <div class="input-group-append">
+                    <span class="input-group-text">% CR</span>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <label class="">
+                    <input type="checkbox" v-model="enemies.second.outspeed"/> Outspeed me?
+                </label>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-12">
+                <input type="text" v-model="enemies.second.infos" class="form-control" placeholder="Extra infos..."/>
+            </div>
+        </div>
+
+        <hr/>
+
+        <div class="row">
+            <div class="col-md-3">
+                <select v-model="enemies.third.name" class="selectpicker" title="Third hero" data-live-search="true">
+                    <option v-for="item in characters" :value="item.name">
+                        {{item.name}}
+                    </option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <select v-model="enemies.third.artefact" class="selectpicker" title="Third artefact" data-live-search="true">
+                    <option v-for="item in artefacts" :value="item.name">
+                        {{item.name}}
+                    </option>
+                </select>
+            </div>
+            <div class="input-group col-md-2">
+                <input v-model="enemies.third.hp" type="number" min="0" class="form-control"/>
+                <div class="input-group-append">
+                    <span class="input-group-text">HP</span>
+                </div>
+            </div>
+            <div class="input-group col-md-2">
+                <input v-model="enemies.third.cr" type="number" min="0" class="form-control"/>
+                <div class="input-group-append">
+                    <span class="input-group-text">% CR</span>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <label class="">
+                    <input type="checkbox" v-model="enemies.third.outspeed"/> Outspeed me?
+                </label>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-12">
+                <input type="text" v-model="enemies.third.infos" class="form-control" placeholder="Extra infos..."/>
+            </div>
+        </div>
+
+        <hr/>
+
+        <div class="row">
+            <div class="col-md-12">
+                <button class="btn btn-secondary float-right" v-on:click="copyToClipboard">Copy text to clipboard</button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <textarea id="report" v-model="report" class="form-control mt-3" style="height:200px"></textarea>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script src="characters.js"></script>
+<script src="artefacts.js"></script>
+<script src="index.js"></script>
+</body>
+</html>
