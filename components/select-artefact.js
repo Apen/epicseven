@@ -1,4 +1,4 @@
-import {artefacts} from "../artefacts.js";
+import {artefacts} from "../assets/js/artefacts.js";
 
 export const ComponentSelectArtefact = {
     props: ['title', 'value'],

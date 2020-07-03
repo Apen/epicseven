@@ -1,4 +1,4 @@
-import {characters} from "../characters.js";
+import {characters} from "../assets/js/characters.js";
 
 export const ComponentSelectCharacter = {
     props: ['title', 'value'],
