@@ -105,7 +105,7 @@ var app = new Vue({
                 content += enemy.name;
                 content += enemy.artifact ? ' - ' + enemy.artifact : '';
                 content += enemy.hp ? ' - ' + this.formatHp(parseInt(enemy.hp)) + ' HP' : '';
-                if (enemy.cr && this.firstHero.speed) {
+                if (enemy.cr && baseSpeed) {
                     let cr = enemy.outspeed === true ? parseInt(enemy.cr) + 100 : enemy.cr;
                     content += ' - ' + Math.round((cr * baseSpeed) / 100) + ' speed';
                 }
