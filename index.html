@@ -18,6 +18,7 @@
     <title>Epic Seven Helpers</title>
     <link type="text/css" rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.18/dist/css/bootstrap-select.min.css"/>
+    <link type="text/css" rel="stylesheet" href="assets/css/dark-mode.css"/>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es2015%2CIntersectionObserver"></script>
     <script src="https://unpkg.com/jquery@latest/dist/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -45,6 +46,12 @@
                         <span class="input-group-text">Speed</span>
                     </div>
                     <br/><small class="text-muted">Heroes/speeds are saved locally</small>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="darkSwitch" v-model="darkMode"/>
+                    <label class="custom-control-label" for="darkSwitch">Dark Mode</label>
                 </div>
             </div>
         </div>
@@ -234,5 +241,6 @@
 
 </div>
 <script src="index.js" type="module"></script>
+<script src="assets/js/dark-mode-switch.js"></script>
 </body>
 </html>

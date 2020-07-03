@@ -2,5 +2,6 @@
 
 ## TODO
     
-* Immu
-* Counter
+* Dark mode
+* Translation of 23k
+* T1/T2

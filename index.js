@@ -17,7 +17,8 @@ var app = new Vue({
             second: {},
             third: {},
         },
-        report: ''
+        report: '',
+        darkMode: false
     },
     watch: {
         'firstHero.name': function (val, oldVal) {
@@ -41,6 +42,9 @@ var app = new Vue({
             handler(val) {
                 this.updateReport();
             }
+        },
+        darkMode: function (val) {
+            this.toggleDarkMode(val);
         }
     },
     methods: {
@@ -75,12 +79,28 @@ var app = new Vue({
         },
         resetForm: function () {
             document.location.reload(true);
+        },
+        toggleDarkMode: function (val) {
+            console.log('toggleDarkMode : ' + val);
+            if (val === true || val === 'true') {
+                document.body.classList.add('dark');
+                this.darkMode = true;
+            } else {
+                document.body.classList.remove('dark');
+                this.darkMode = false;
+            }
+            localStorage.setItem('darkMode', val);
         }
-    }
+    },
+    mounted() {
+        if (localStorage.getItem('darkMode')) {
+            this.toggleDarkMode(localStorage.getItem('darkMode'));
+        }
+    },
 });
 
 $(function () {
     $('[data-toggle="tooltip"]').tooltip({
-        trigger : 'hover'
+        trigger: 'hover'
     })
 });

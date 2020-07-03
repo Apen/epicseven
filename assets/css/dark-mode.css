@@ -1,0 +1,20 @@
+.dark {
+    background-color: #222 !important;
+    color: #eee;
+}
+
+.dark .bg-light {
+    background-color: #333 !important;
+}
+
+.dark .bg-white {
+    background-color: #000 !important;
+}
+
+.dark .bg-black {
+    background-color: #eee !important;
+}
+
+.dark hr {
+    border-color: #eee !important;
+}
