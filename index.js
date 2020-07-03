@@ -1,11 +1,11 @@
 import {ComponentSelectCharacter} from "./components/select-character.js"
-import {ComponentSelectArtefact} from "./components/select-artefact.js"
+import {ComponentSelectArtifact} from "./components/select-artifact.js"
 
 var app = new Vue({
     el: '#app',
     components: {
         'select-character': ComponentSelectCharacter,
-        'select-artefact': ComponentSelectArtefact
+        'select-artifact': ComponentSelectArtifact
     },
     data: {
         firstHero: {
@@ -58,7 +58,7 @@ var app = new Vue({
             let content = '';
             if (enemy.name) {
                 content += enemy.name;
-                content += enemy.artefact ? ' - ' + enemy.artefact : '';
+                content += enemy.artifact ? ' - ' + enemy.artifact : '';
                 content += enemy.hp ? ' - ' + this.formatHp(parseInt(enemy.hp)) + ' HP' : '';
                 if (enemy.cr && this.firstHero.speed) {
                     let cr = enemy.outspeed === true ? parseInt(enemy.cr) + 100 : enemy.cr;
@@ -84,7 +84,6 @@ var app = new Vue({
             document.location.reload(true);
         },
         toggleDarkMode: function (val) {
-            console.log('toggleDarkMode : ' + val);
             if (val === true || val === 'true') {
                 document.body.classList.add('dark');
                 this.darkMode = true;
