@@ -59,7 +59,7 @@ var app = new Vue({
             if (enemy.name) {
                 content += enemy.name;
                 content += enemy.artefact ? ' - ' + enemy.artefact : '';
-                content += enemy.hp ? ' - ' + enemy.hp + 'HP' : '';
+                content += enemy.hp ? ' - ' + this.formatHp(parseInt(enemy.hp)) + ' HP' : '';
                 if (enemy.cr && this.firstHero.speed) {
                     let cr = enemy.outspeed === true ? parseInt(enemy.cr) + 100 : enemy.cr;
                     content += ' - ' + Math.round((cr * this.firstHero.speed) / 100) + ' speed';
@@ -70,6 +70,9 @@ var app = new Vue({
                 content += "\r\n";
             }
             return content;
+        },
+        formatHp: function (num) {
+            return Math.abs(num) > 999 ? Math.sign(num) * ((Math.abs(num) / 1000).toFixed(1)) + 'k' : Math.sign(num) * Math.abs(num)
         },
         copyToClipboard: function () {
             if ($('#report')) {
