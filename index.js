@@ -79,3 +79,8 @@ var app = new Vue({
     }
 });
 
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip({
+        trigger : 'hover'
+    })
+});
