@@ -12,11 +12,21 @@ var app = new Vue({
             name: '',
             speed: ''
         },
-        enemies: {
+        secondHero: {
+            name: '',
+            speed: ''
+        },
+        enemiesFirstHero: {
             first: {},
             second: {},
             third: {},
         },
+        enemiesSecondHero: {
+            first: {},
+            second: {},
+            third: {},
+        },
+        tower: '',
         report: '',
         darkMode: false
     },
@@ -24,20 +34,41 @@ var app = new Vue({
         'firstHero.name': function (val, oldVal) {
             if (val && !this.firstHero.speed) {
                 if (localStorage.getItem(val)) {
-                    console.log('get localStorage : ' + val);
                     this.firstHero.speed = localStorage.getItem(val);
                 }
             } else {
                 this.firstHero.speed = '';
             }
         },
+        'secondHero.name': function (val, oldVal) {
+            if (val && !this.secondHero.speed) {
+                if (localStorage.getItem(val)) {
+                    this.secondHero.speed = localStorage.getItem(val);
+                }
+            } else {
+                this.secondHero.speed = '';
+            }
+        },
         'firstHero.speed': function (val) {
             if (this.firstHero.name && val) {
-                console.log('save localStorage : ' + this.firstHero.name + ' ' + val);
                 localStorage.setItem(this.firstHero.name, val);
             }
         },
-        enemies: {
+        'secondHero.speed': function (val) {
+            if (this.secondHero.name && val) {
+                localStorage.setItem(this.secondHero.name, val);
+            }
+        },
+        tower: function (val) {
+            this.updateReport();
+        },
+        enemiesFirstHero: {
+            deep: true,
+            handler(val) {
+                this.updateReport();
+            }
+        },
+        enemiesSecondHero: {
             deep: true,
             handler(val) {
                 this.updateReport();
@@ -50,11 +81,25 @@ var app = new Vue({
     methods: {
         updateReport: function () {
             this.report = '';
-            this.report += this.updateLine(this.enemies.first);
-            this.report += this.updateLine(this.enemies.second);
-            this.report += this.updateLine(this.enemies.third);
+            if (this.tower) {
+                this.report += "** " + this.tower + " **\r\n"
+            }
+            let contentT1 = '';
+            contentT1 += this.updateLine(this.enemiesFirstHero.first,this.firstHero.speed);
+            contentT1 += this.updateLine(this.enemiesFirstHero.second,this.firstHero.speed);
+            contentT1 += this.updateLine(this.enemiesFirstHero.third,this.firstHero.speed);
+            if (contentT1 !== '') {
+                this.report += "T1\r\n" + contentT1;
+            }
+            let contentT2 = '';
+            contentT2 += this.updateLine(this.enemiesSecondHero.first,this.secondHero.speed);
+            contentT2 += this.updateLine(this.enemiesSecondHero.second,this.secondHero.speed);
+            contentT2 += this.updateLine(this.enemiesSecondHero.third,this.secondHero.speed);
+            if (contentT2 !== '') {
+                this.report += "T2\r\n" + contentT2;
+            }
         },
-        updateLine: function (enemy) {
+        updateLine: function (enemy,baseSpeed) {
             let content = '';
             if (enemy.name) {
                 content += enemy.name;
@@ -62,7 +107,7 @@ var app = new Vue({
                 content += enemy.hp ? ' - ' + this.formatHp(parseInt(enemy.hp)) + ' HP' : '';
                 if (enemy.cr && this.firstHero.speed) {
                     let cr = enemy.outspeed === true ? parseInt(enemy.cr) + 100 : enemy.cr;
-                    content += ' - ' + Math.round((cr * this.firstHero.speed) / 100) + ' speed';
+                    content += ' - ' + Math.round((cr * baseSpeed) / 100) + ' speed';
                 }
                 content += enemy.counter ? ' - Counter set' : '';
                 content += enemy.immunity ? ' - Immunity set' : '';
