@@ -2,5 +2,4 @@
 
 ## TODO
     
-* name of the tower
-* T1/T2
+Nothing at the moment :-)
