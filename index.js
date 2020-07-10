@@ -136,7 +136,6 @@ const app = new Vue({
                 $('#report').select();
                 document.execCommand("copy");
             }
-            i18n.locale = 'fr';
         },
         resetForm: function () {
             document.location.reload(true);
