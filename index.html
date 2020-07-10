@@ -24,6 +24,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/vue@latest/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-i18n/dist/vue-i18n.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.18/dist/js/bootstrap-select.min.js"></script>
 </head>
 <body>
@@ -31,12 +32,12 @@
     <div class="container" style="margin-top:10px;">
         <div class="row">
             <div class="col-md-6">
-                <h1>Guild war reporting</h1>
+                <h1>{{ $t('title') }}</h1>
             </div>
             <div class="col-md-6">
                 <div class="custom-control custom-switch float-right">
                     <input type="checkbox" class="custom-control-input" id="darkSwitch" v-model="darkMode"/>
-                    <label class="custom-control-label" for="darkSwitch">Dark Mode</label>
+                    <label class="custom-control-label" for="darkSwitch">{{ $t('darkMode') }}</label>
                 </div>
             </div>
         </div>
@@ -44,7 +45,7 @@
         <hr/>
 
         <div class="form-group">
-            <input type="text" v-model="tower" class="form-control" placeholder="Name of the tower or player..."/>
+            <input type="text" v-model="tower" class="form-control" :placeholder="$t('tower')"/>
         </div>
 
 
@@ -52,9 +53,9 @@
             <div class="col-md-12">
                 <div class="form-group">
                     <nav class="nav nav-tabs">
-                        <a class="nav-item nav-link active" href="#t1" data-toggle="tab">T1</a>
-                        <a class="nav-item nav-link" href="#t2" data-toggle="tab">T2</a>
-                        <a class="nav-item nav-link" href="#result" data-toggle="tab">Report</a>
+                        <a class="nav-item nav-link active" href="#t1" data-toggle="tab">{{ $t('t1') }}</a>
+                        <a class="nav-item nav-link" href="#t2" data-toggle="tab">{{ $t('t2') }}</a>
+                        <a class="nav-item nav-link" href="#result" data-toggle="tab">{{ $t('report') }}</a>
                     </nav>
                 </div>
             </div>
@@ -65,16 +66,16 @@
                 <div class="row">
                     <div class="col-md-3">
                         <div class="form-group">
-                            <select-character v-model="firstHero.name" title="Your first hero"></select-character>
+                            <select-character v-model="firstHero.name" :title="$t('firstHero')"></select-character>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="input-group form-group">
                             <input v-model="firstHero.speed" type="number" min="0" class="form-control"/>
                             <div class="input-group-append">
-                                <span class="input-group-text">Speed</span>
+                                <span class="input-group-text">{{ $t('speed') }}</span>
                             </div>
-                            <br/><small class="text-muted"> Heroes/speeds are saved locally</small>
+                            <br/><small class="text-muted"> {{ $t('heroesSaved') }}</small>
                         </div>
                     </div>
                     <div class="col-md-3">
@@ -87,19 +88,19 @@
                 <div class="form-row">
                     <div class="col-md-3">
                         <div class="form-group">
-                            <select-character v-model="enemiesFirstHero.first.name" title="First hero"></select-character>
+                            <select-character v-model="enemiesFirstHero.first.name" :title="$t('enemiesFirstHero')"></select-character>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-group">
-                            <select-artifact v-model="enemiesFirstHero.first.artifact" title="First artifact"></select-artifact>
+                            <select-artifact ref="enemiesFirstHeroFirst" v-model="enemiesFirstHero.first.artifact" :title="$t('enemiesFirstArtifact')"></select-artifact>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="input-group form-group">
                             <input v-model="enemiesFirstHero.first.hp" type="number" min="0" class="form-control"/>
                             <div class="input-group-append">
-                                <span class="input-group-text">HP</span>
+                                <span class="input-group-text">{{ $t('hp') }}</span>
                             </div>
                         </div>
                     </div>
@@ -107,7 +108,7 @@
                         <div class="input-group form-group">
                             <input v-model="enemiesFirstHero.first.cr" type="number" min="0" class="form-control"/>
                             <div class="input-group-append">
-                                <span class="input-group-text">% CR</span>
+                                <span class="input-group-text">{{ $t('cr') }}</span>
                             </div>
                         </div>
                     </div>
@@ -115,8 +116,8 @@
                 <div class="row">
                     <div class="col-md-3">
                         <div class="form-group">
-                            <label data-toggle="tooltip" data-placement="top" title="Is he play before me?">
-                                <input type="checkbox" v-model="enemiesFirstHero.first.outspeed"/> Outspeed?
+                            <label data-toggle="tooltip" data-placement="top" :title="$t('outspeedDesc')">
+                                <input type="checkbox" v-model="enemiesFirstHero.first.outspeed"/> {{ $t('outspeed') }}
                             </label>
                             <label>
                                 <input type="checkbox" v-model="enemiesFirstHero.first.counter"/> <img src="assets/images/Counter.png"/>
@@ -128,7 +129,7 @@
                     </div>
                     <div class="col-md-9">
                         <div class="form-group">
-                            <input type="text" v-model="enemiesFirstHero.first.infos" class="form-control" placeholder="Extra infos..."/>
+                            <input type="text" v-model="enemiesFirstHero.first.infos" class="form-control" :placeholder="$t('extraInfos')"/>
                         </div>
                     </div>
                 </div>
@@ -138,19 +139,19 @@
                 <div class="row">
                     <div class="col-md-3">
                         <div class="form-group">
-                            <select-character v-model="enemiesFirstHero.second.name" title="Second hero"></select-character>
+                            <select-character v-model="enemiesFirstHero.second.name" :title="$t('enemiesSecondHero')"></select-character>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-group">
-                            <select-artifact v-model="enemiesFirstHero.second.artifact" title="Second artifact"></select-artifact>
+                            <select-artifact v-model="enemiesFirstHero.second.artifact" :title="$t('enemiesSecondArtifact')"></select-artifact>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="input-group form-group">
                             <input v-model="enemiesFirstHero.second.hp" type="number" min="0" class="form-control"/>
                             <div class="input-group-append">
-                                <span class="input-group-text">HP</span>
+                                <span class="input-group-text">{{ $t('hp') }}</span>
                             </div>
                         </div>
                     </div>
@@ -158,7 +159,7 @@
                         <div class="input-group form-group">
                             <input v-model="enemiesFirstHero.second.cr" type="number" min="0" class="form-control"/>
                             <div class="input-group-append">
-                                <span class="input-group-text">% CR</span>
+                                <span class="input-group-text">{{ $t('cr') }}</span>
                             </div>
                         </div>
                     </div>
@@ -166,8 +167,8 @@
                 <div class="row">
                     <div class="col-md-3">
                         <div class="form-group">
-                            <label data-toggle="tooltip" data-placement="top" title="Is he play before me?">
-                                <input type="checkbox" v-model="enemiesFirstHero.second.outspeed"/> Outspeed?
+                            <label data-toggle="tooltip" data-placement="top" :title="$t('outspeedDesc')">
+                                <input type="checkbox" v-model="enemiesFirstHero.second.outspeed"/> {{ $t('outspeed') }}
                             </label>
                             <label>
                                 <input type="checkbox" v-model="enemiesFirstHero.second.counter"/> <img src="assets/images/Counter.png"/>
@@ -179,7 +180,7 @@
                     </div>
                     <div class="col-md-9">
                         <div class="form-group">
-                            <input type="text" v-model="enemiesFirstHero.second.infos" class="form-control" placeholder="Extra infos..."/>
+                            <input type="text" v-model="enemiesFirstHero.second.infos" class="form-control" :placeholder="$t('extraInfos')"/>
                         </div>
                     </div>
                 </div>
@@ -189,19 +190,19 @@
                 <div class="row">
                     <div class="col-md-3">
                         <div class="form-group">
-                            <select-character v-model="enemiesFirstHero.third.name" title="Third hero"></select-character>
+                            <select-character v-model="enemiesFirstHero.third.name" :title="$t('enemiesThirdHero')"></select-character>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-group">
-                            <select-artifact v-model="enemiesFirstHero.third.artifact" title="Third artifact"></select-artifact>
+                            <select-artifact v-model="enemiesFirstHero.third.artifact" :title="$t('enemiesThirdArtifact')"></select-artifact>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="input-group form-group">
                             <input v-model="enemiesFirstHero.third.hp" type="number" min="0" class="form-control"/>
                             <div class="input-group-append">
-                                <span class="input-group-text">HP</span>
+                                <span class="input-group-text">{{ $t('hp') }}</span>
                             </div>
                         </div>
                     </div>
@@ -209,7 +210,7 @@
                         <div class="input-group form-group">
                             <input v-model="enemiesFirstHero.third.cr" type="number" min="0" class="form-control"/>
                             <div class="input-group-append">
-                                <span class="input-group-text">% CR</span>
+                                <span class="input-group-text">{{ $t('cr') }}</span>
                             </div>
                         </div>
                     </div>
@@ -217,8 +218,8 @@
                 <div class="row mt-3">
                     <div class="col-md-3">
                         <div class="form-group">
-                            <label data-toggle="tooltip" data-placement="top" title="Is he play before me?">
-                                <input type="checkbox" v-model="enemiesFirstHero.third.outspeed"/> Outspeed?
+                            <label data-toggle="tooltip" data-placement="top" :title="$t('outspeedDesc')">
+                                <input type="checkbox" v-model="enemiesFirstHero.third.outspeed"/> {{ $t('outspeed') }}
                             </label>
                             <label>
                                 <input type="checkbox" v-model="enemiesFirstHero.third.counter"/> <img src="assets/images/Counter.png"/>
@@ -230,7 +231,7 @@
                     </div>
                     <div class="col-md-9">
                         <div class="form-group">
-                            <input type="text" v-model="enemiesFirstHero.third.infos" class="form-control" placeholder="Extra infos..."/>
+                            <input type="text" v-model="enemiesFirstHero.third.infos" class="form-control" :placeholder="$t('extraInfos')"/>
                         </div>
                     </div>
                 </div>
@@ -239,16 +240,16 @@
                 <div class="row">
                     <div class="col-md-3">
                         <div class="form-group">
-                            <select-character v-model="secondHero.name" title="Your first hero"></select-character>
+                            <select-character v-model="secondHero.name" :title="$t('firstHero')"></select-character>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="input-group form-group">
                             <input v-model="secondHero.speed" type="number" min="0" class="form-control"/>
                             <div class="input-group-append">
-                                <span class="input-group-text">Speed</span>
+                                <span class="input-group-text">{{ $t('speed') }}</span>
                             </div>
-                            <br/><small class="text-muted"> Heroes/speeds are saved locally</small>
+                            <br/><small class="text-muted"> {{ $t('heroesSaved') }}</small>
                         </div>
                     </div>
                     <div class="col-md-3">
@@ -261,19 +262,19 @@
                 <div class="form-row">
                     <div class="col-md-3">
                         <div class="form-group">
-                            <select-character v-model="enemiesSecondHero.first.name" title="First hero"></select-character>
+                            <select-character v-model="enemiesSecondHero.first.name" :title="$t('enemiesFirstHero')"></select-character>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-group">
-                            <select-artifact v-model="enemiesSecondHero.first.artifact" title="First artifact"></select-artifact>
+                            <select-artifact v-model="enemiesSecondHero.first.artifact" :title="$t('enemiesFirstArtifact')"></select-artifact>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="input-group form-group">
                             <input v-model="enemiesSecondHero.first.hp" type="number" min="0" class="form-control"/>
                             <div class="input-group-append">
-                                <span class="input-group-text">HP</span>
+                                <span class="input-group-text">{{ $t('hp') }}</span>
                             </div>
                         </div>
                     </div>
@@ -281,7 +282,7 @@
                         <div class="input-group form-group">
                             <input v-model="enemiesSecondHero.first.cr" type="number" min="0" class="form-control"/>
                             <div class="input-group-append">
-                                <span class="input-group-text">% CR</span>
+                                <span class="input-group-text">{{ $t('cr') }}</span>
                             </div>
                         </div>
                     </div>
@@ -289,8 +290,8 @@
                 <div class="row">
                     <div class="col-md-3">
                         <div class="form-group">
-                            <label data-toggle="tooltip" data-placement="top" title="Is he play before me?">
-                                <input type="checkbox" v-model="enemiesSecondHero.first.outspeed"/> Outspeed?
+                            <label data-toggle="tooltip" data-placement="top" :title="$t('outspeedDesc')">
+                                <input type="checkbox" v-model="enemiesSecondHero.first.outspeed"/> {{ $t('outspeed') }}
                             </label>
                             <label>
                                 <input type="checkbox" v-model="enemiesSecondHero.first.counter"/> <img src="assets/images/Counter.png"/>
@@ -302,7 +303,7 @@
                     </div>
                     <div class="col-md-9">
                         <div class="form-group">
-                            <input type="text" v-model="enemiesSecondHero.first.infos" class="form-control" placeholder="Extra infos..."/>
+                            <input type="text" v-model="enemiesSecondHero.first.infos" class="form-control" :placeholder="$t('extraInfos')"/>
                         </div>
                     </div>
                 </div>
@@ -312,19 +313,19 @@
                 <div class="row">
                     <div class="col-md-3">
                         <div class="form-group">
-                            <select-character v-model="enemiesSecondHero.second.name" title="Second hero"></select-character>
+                            <select-character v-model="enemiesSecondHero.second.name" :title="$t('enemiesSecondHero')"></select-character>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-group">
-                            <select-artifact v-model="enemiesSecondHero.second.artifact" title="Second artifact"></select-artifact>
+                            <select-artifact v-model="enemiesSecondHero.second.artifact" :title="$t('enemiesSecondArtifact')"></select-artifact>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="input-group form-group">
                             <input v-model="enemiesSecondHero.second.hp" type="number" min="0" class="form-control"/>
                             <div class="input-group-append">
-                                <span class="input-group-text">HP</span>
+                                <span class="input-group-text">{{ $t('hp') }}</span>
                             </div>
                         </div>
                     </div>
@@ -332,7 +333,7 @@
                         <div class="input-group form-group">
                             <input v-model="enemiesSecondHero.second.cr" type="number" min="0" class="form-control"/>
                             <div class="input-group-append">
-                                <span class="input-group-text">% CR</span>
+                                <span class="input-group-text">{{ $t('cr') }}</span>
                             </div>
                         </div>
                     </div>
@@ -340,8 +341,8 @@
                 <div class="row">
                     <div class="col-md-3">
                         <div class="form-group">
-                            <label data-toggle="tooltip" data-placement="top" title="Is he play before me?">
-                                <input type="checkbox" v-model="enemiesSecondHero.second.outspeed"/> Outspeed?
+                            <label data-toggle="tooltip" data-placement="top" :title="$t('outspeedDesc')">
+                                <input type="checkbox" v-model="enemiesSecondHero.second.outspeed"/> {{ $t('outspeed') }}
                             </label>
                             <label>
                                 <input type="checkbox" v-model="enemiesSecondHero.second.counter"/> <img src="assets/images/Counter.png"/>
@@ -353,7 +354,7 @@
                     </div>
                     <div class="col-md-9">
                         <div class="form-group">
-                            <input type="text" v-model="enemiesSecondHero.second.infos" class="form-control" placeholder="Extra infos..."/>
+                            <input type="text" v-model="enemiesSecondHero.second.infos" class="form-control" :placeholder="$t('extraInfos')"/>
                         </div>
                     </div>
                 </div>
@@ -363,19 +364,19 @@
                 <div class="row">
                     <div class="col-md-3">
                         <div class="form-group">
-                            <select-character v-model="enemiesSecondHero.third.name" title="Third hero"></select-character>
+                            <select-character v-model="enemiesSecondHero.third.name" :title="$t('enemiesThirdHero')"></select-character>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-group">
-                            <select-artifact v-model="enemiesSecondHero.third.artifact" title="Third artifact"></select-artifact>
+                            <select-artifact v-model="enemiesSecondHero.third.artifact" :title="$t('enemiesThirdArtifact')"></select-artifact>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="input-group form-group">
                             <input v-model="enemiesSecondHero.third.hp" type="number" min="0" class="form-control"/>
                             <div class="input-group-append">
-                                <span class="input-group-text">HP</span>
+                                <span class="input-group-text">{{ $t('hp') }}</span>
                             </div>
                         </div>
                     </div>
@@ -383,7 +384,7 @@
                         <div class="input-group form-group">
                             <input v-model="enemiesSecondHero.third.cr" type="number" min="0" class="form-control"/>
                             <div class="input-group-append">
-                                <span class="input-group-text">% CR</span>
+                                <span class="input-group-text">{{ $t('cr') }}</span>
                             </div>
                         </div>
                     </div>
@@ -391,8 +392,8 @@
                 <div class="row mt-3">
                     <div class="col-md-3">
                         <div class="form-group">
-                            <label data-toggle="tooltip" data-placement="top" title="Is he play before me?">
-                                <input type="checkbox" v-model="enemiesSecondHero.third.outspeed"/> Outspeed?
+                            <label data-toggle="tooltip" data-placement="top" :title="$t('outspeedDesc')">
+                                <input type="checkbox" v-model="enemiesSecondHero.third.outspeed"/> {{ $t('outspeed') }}
                             </label>
                             <label>
                                 <input type="checkbox" v-model="enemiesSecondHero.third.counter"/> <img src="assets/images/Counter.png"/>
@@ -404,7 +405,7 @@
                     </div>
                     <div class="col-md-9">
                         <div class="form-group">
-                            <input type="text" v-model="enemiesSecondHero.third.infos" class="form-control" placeholder="Extra infos..."/>
+                            <input type="text" v-model="enemiesSecondHero.third.infos" class="form-control" :placeholder="$t('extraInfos')"/>
                         </div>
                     </div>
                 </div>
@@ -413,8 +414,8 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
-                            <button class="btn btn-secondary float-right" v-on:click="copyToClipboard">Copy text to clipboard</button>
-                            <button class="btn btn-secondary float-right mr-3" v-on:click="resetForm">Reset form</button>
+                            <button class="btn btn-secondary float-right" v-on:click="copyToClipboard">{{ $t('copyText') }}</button>
+                            <button class="btn btn-secondary float-right mr-3" v-on:click="resetForm">{{ $t('reset') }}</button>
                         </div>
                     </div>
                 </div>
