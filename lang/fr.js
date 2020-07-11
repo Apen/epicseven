@@ -14,6 +14,7 @@ export const fr = {
     extraInfos: 'Informations supplémentaires...',
     heroesSaved: 'Les héros/vitesses sont sauvegardés localement',
     copyText: 'Copier le texte dans le presse papier',
+    copyTextSL: 'Copier le texte dans le presse papier(une ligne)',
     reset: 'Vider le formulaire',
     enemiesFirstHero: 'Premier héro',
     enemiesSecondHero: 'Second héro',

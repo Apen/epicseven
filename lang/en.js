@@ -14,6 +14,7 @@ export const en = {
     extraInfos: 'Extra infos...',
     heroesSaved: 'Heroes/speeds are saved locally',
     copyText: 'Copy text to clipboard',
+    copyTextSL: 'Copy text to clipboard(Single line)',
     reset: 'Reset form',
     enemiesFirstHero: 'First hero',
     enemiesSecondHero: 'Second hero',
