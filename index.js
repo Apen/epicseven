@@ -25,7 +25,6 @@ const app = new Vue({
     },
     data: {
         langs: ['en', 'fr', 'cn', 'tw'],
-        'i18n.locale': 'fr',
         firstHero: {
             name: '',
             speed: ''
@@ -176,11 +175,13 @@ const app = new Vue({
         if (localStorage.getItem('darkMode')) {
             this.toggleDarkMode(localStorage.getItem('darkMode'));
         }
-        var langCode = navigator.language || navigator.userLanguage;
-        if (langCode === "zh-TW" || langCode === "zh-HK" || langCode === "zh-MO") langCode = "tw";
-        if (langCode === "zh-CN" || langCode === "zh-SG") langCode = "cn";
-
-        this.$i18n.locale = langCode;
+        if (localStorage.getItem('langCode')) {
+            let langCode = localStorage.getItem('langCode');
+        } else {
+            let langCode = navigator.language || navigator.userLanguage;
+            if (langCode === "zh-TW" || langCode === "zh-HK" || langCode === "zh-MO") langCode = "tw";
+            if (langCode === "zh-CN" || langCode === "zh-SG") langCode = "cn";
+        }
         i18n.locale = langCode;
     },
 });
