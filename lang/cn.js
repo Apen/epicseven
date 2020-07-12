@@ -11,6 +11,8 @@ export const cn = {
     cr: '% 速攻值',
     outspeed: '被对方超车?',
     outspeedDesc: '对面比我快?',
+    setCounter: '反击套',
+    setImmunity: '免疫套',
     extraInfos: '备注...',
     heroesSaved: '你输入的英雄速度会保存在本地',
     copyText: '复制到剪贴板',
