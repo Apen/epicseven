@@ -22,4 +22,6 @@ export const fr = {
     enemiesFirstArtifact: 'Premier artefact',
     enemiesSecondArtifact: 'Second artefact',
     enemiesThirdArtifact: 'Troisième artefact',
+    setCounter: 'Set contre',
+    setImmunity: 'Set immunité',
 }

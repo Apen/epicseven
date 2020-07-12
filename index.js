@@ -122,13 +122,13 @@ const app = new Vue({
             if (enemy.name) {
                 content += enemy.name;
                 content += enemy.artifact ? ' - ' + enemy.artifact : '';
-                content += enemy.hp ? ' - ' + this.formatHp(parseInt(enemy.hp)) + ' HP' : '';
+                content += enemy.hp ? ' - ' + this.formatHp(parseInt(enemy.hp)) + ' ' + this.$t('hp') : '';
                 if (enemy.cr && baseSpeed) {
                     let cr = enemy.outspeed === true ? parseInt(enemy.cr) + 100 : enemy.cr;
-                    content += ' - ' + Math.round((cr * baseSpeed) / 100) + ' speed';
+                    content += ' - ' + Math.round((cr * baseSpeed) / 100) + ' ' + this.$t('vitesse');
                 }
-                content += enemy.counter ? ' - Counter set' : '';
-                content += enemy.immunity ? ' - Immunity set' : '';
+                content += enemy.counter ? ' - ' + this.$t('setCounter') : '';
+                content += enemy.immunity ? ' - ' + this.$t('setImmunity') : '';
                 content += enemy.infos ? ' - ' + enemy.infos : '';
                 content += "\r\n";
             }
