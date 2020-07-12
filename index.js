@@ -16,12 +16,6 @@ const i18n = new VueI18n({
     },
 })
 
-var langCode = navigator.language || navigator.userLanguage;
-if (langCode === "zh-TW" || langCode === "zh-HK" || langCode === "zh-MO") langCode = "tw";
-if (langCode === "zh-CN" || langCode === "zh-SG") langCode = "cn";
-
-i18n.locale = langCode;
-
 const app = new Vue({
     i18n,
     el: '#app',
@@ -30,7 +24,8 @@ const app = new Vue({
         'select-artifact': ComponentSelectArtifact
     },
     data: {
-        langs: ['en', 'fr','cn','tw'],
+        langs: ['en', 'fr', 'cn', 'tw'],
+        'i18n.locale': 'fr',
         firstHero: {
             name: '',
             speed: ''
@@ -152,7 +147,7 @@ const app = new Vue({
             if ($('#report')) {
                 var copyText = document.querySelector("#report");
                 var ML = copyText._value;
-                var SL = ML.replace(/(\r\n|\n|\r)/gm," ");
+                var SL = ML.replace(/(\r\n|\n|\r)/gm, " ");
                 var slcopy = document.getElementById("sl");
                 slcopy.value = SL;
                 sl.select();
@@ -181,6 +176,12 @@ const app = new Vue({
         if (localStorage.getItem('darkMode')) {
             this.toggleDarkMode(localStorage.getItem('darkMode'));
         }
+        var langCode = navigator.language || navigator.userLanguage;
+        if (langCode === "zh-TW" || langCode === "zh-HK" || langCode === "zh-MO") langCode = "tw";
+        if (langCode === "zh-CN" || langCode === "zh-SG") langCode = "cn";
+
+        this.$i18n.locale = langCode;
+        i18n.locale = langCode;
     },
 });
 
