@@ -47,7 +47,7 @@
                 </div>
                 <div class="locale-changer float-right mr-3">
                     <select v-model="$i18n.locale">
-                        <option v-for="(lang, i) in langs" :value="lang">{{ lang }}</option>
+                        <option v-for="(lang, i) in langs" :value="lang.code">{{ lang.name }}</option>
                     </select>
                 </div>
             </div>
