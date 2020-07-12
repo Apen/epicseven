@@ -2,15 +2,25 @@ import {ComponentSelectCharacter} from "./components/select-character.js"
 import {ComponentSelectArtifact} from "./components/select-artifact.js"
 import {en} from "./lang/en.js";
 import {fr} from "./lang/fr.js";
+import {cn} from "./lang/cn.js";
+import {tw} from "./lang/tw.js";
 
 const i18n = new VueI18n({
     locale: 'en',
     fallbackLocale: 'en',
     messages: {
         en: en,
-        fr: fr
-    }
+        fr: fr,
+        cn: cn,
+        tw: tw
+    },
 })
+
+var langCode = navigator.language || navigator.userLanguage;
+if (langCode === "zh-TW" || langCode === "zh-HK" || langCode === "zh-MO") langCode = "tw";
+if (langCode === "zh-CN" || langCode === "zh-SG") langCode = "cn";
+
+i18n.locale = langCode;
 
 const app = new Vue({
     i18n,
@@ -20,6 +30,7 @@ const app = new Vue({
         'select-artifact': ComponentSelectArtifact
     },
     data: {
+        langs: ['en', 'fr','cn','tw'],
         firstHero: {
             name: '',
             speed: ''
@@ -134,6 +145,17 @@ const app = new Vue({
         copyToClipboard: function () {
             if ($('#report')) {
                 $('#report').select();
+                document.execCommand("copy");
+            }
+        },
+        copyToClipboardSL: function () {
+            if ($('#report')) {
+                var copyText = document.querySelector("#report");
+                var ML = copyText._value;
+                var SL = ML.replace(/(\r\n|\n|\r)/gm," ");
+                var slcopy = document.getElementById("sl");
+                slcopy.value = SL;
+                sl.select();
                 document.execCommand("copy");
             }
         },

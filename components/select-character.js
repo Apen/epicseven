@@ -1,5 +1,7 @@
 import {en} from "../assets/js/en.characters.js";
-import {fr} from "../assets/js/fr.artifacts.js";
+import {fr} from "../assets/js/fr.characters.js";
+import {cn} from "../assets/js/cn.characters.js";
+import {tw} from "../assets/js/tw.characters.js";
 
 export const ComponentSelectCharacter = {
     props: ['title', 'value'],
@@ -28,6 +30,12 @@ export const ComponentSelectCharacter = {
                     break;
                 case 'fr':
                     characters = fr;
+                    break;
+                case 'cn':
+                    characters = cn;
+                    break;
+                case 'tw':
+                    characters = tw;
                     break;
                 default:
                     characters = en;

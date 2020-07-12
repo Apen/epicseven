@@ -1,5 +1,7 @@
 import {en} from "../assets/js/en.artifacts.js";
 import {fr} from "../assets/js/fr.artifacts.js";
+import {cn} from "../assets/js/cn.artifacts.js";
+import {tw} from "../assets/js/tw.artifacts.js";
 
 export const ComponentSelectArtifact = {
     props: ['title', 'value'],
@@ -28,6 +30,12 @@ export const ComponentSelectArtifact = {
                     break;
                 case 'fr':
                     artifacts = fr;
+                    break;
+                case 'cn':
+                    artifacts = cn;
+                    break;
+                case 'tw':
+                    artifacts = tw;
                     break;
                 default:
                     artifacts = en;

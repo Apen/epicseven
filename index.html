@@ -31,6 +31,7 @@
     <script src="https://unpkg.com/vue@latest/dist/vue.js"></script>
     <script src="https://unpkg.com/vue-i18n/dist/vue-i18n.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.18/dist/js/bootstrap-select.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icon-css@3.5.0/css/flag-icon.min.css">
 </head>
 <body>
 <div id="app" v-cloak>
@@ -44,6 +45,11 @@
                     <input type="checkbox" class="custom-control-input" id="darkSwitch" v-model="darkMode"/>
                     <label class="custom-control-label" for="darkSwitch">{{ $t('darkMode') }}</label>
                 </div>
+                <div class="locale-changer float-right mr-3">
+                <select v-model="$i18n.locale">
+                    <option v-for="(lang, i) in langs" :key="`Lang${i}`" :value="lang">{{ lang }}</option>
+                </select>
+            </div>
             </div>
         </div>
 
@@ -420,6 +426,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <button class="btn btn-secondary float-right" v-on:click="copyToClipboard">{{ $t('copyText') }}</button>
+                            <button class="btn btn-secondary float-right mr-3" v-on:click="copyToClipboardSL">{{ $t('copyTextSL') }}</button>
                             <button class="btn btn-secondary float-right mr-3" v-on:click="resetForm">{{ $t('reset') }}</button>
                         </div>
                     </div>
@@ -428,6 +435,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <textarea id="report" v-model="report" class="form-control mt-3" style="height:300px"></textarea>
+                            <textarea id="sl" style="opacity:0"></textarea>
                         </div>
                     </div>
                 </div>
