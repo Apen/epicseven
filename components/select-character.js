@@ -12,7 +12,7 @@ export const ComponentSelectCharacter = {
     },
     watch: {
         title: function (val, oldVal) {
-            this.artifacts = this.getItems();
+            this.characters = this.getItems();
         }
     },
     updated: function () {
