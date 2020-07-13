@@ -17,8 +17,8 @@ const i18n = new VueI18n({
 })
 
 const app = new Vue({
-    i18n,
     el: '#app',
+    i18n,
     components: {
         'select-character': ComponentSelectCharacter,
         'select-artifact': ComponentSelectArtifact
@@ -130,7 +130,13 @@ const app = new Vue({
             return content;
         },
         formatHp: function (num) {
-            return Math.abs(num) > 999 ? Math.sign(num) * ((Math.abs(num) / 1000).toFixed(1)) + this.$t('formatHpK') : Math.sign(num) * Math.abs(num)
+            if ($("#locale-changer :selected").val() === 'cn' ) {
+                return Math.abs(num) > 999 ? Math.sign(num) * ((Math.abs(num) / 10000).toFixed(2)) + this.$t('formatHpK') : Math.sign(num) * Math.abs(num);
+            } else if ($("#locale-changer :selected").val() === 'tw') {
+                return Math.abs(num) > 999 ? Math.sign(num) * ((Math.abs(num) / 10000).toFixed(2)) + this.$t('formatHpK') : Math.sign(num) * Math.abs(num);                 
+            } else {
+                return Math.abs(num) > 999 ? Math.sign(num) * ((Math.abs(num) / 1000).toFixed(1)) + this.$t('formatHpK') : Math.sign(num) * Math.abs(num);
+            }
         },
         copyToClipboard: function () {
             if ($('#report')) {
