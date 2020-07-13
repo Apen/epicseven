@@ -24,4 +24,5 @@ export const fr = {
     enemiesThirdArtifact: 'Troisième artefact',
     setCounter: 'Set contre',
     setImmunity: 'Set immunité',
+    formatHpK: 'k'
 }

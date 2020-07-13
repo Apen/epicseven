@@ -24,4 +24,5 @@ export const en = {
     enemiesThirdArtifact: 'Third artifact',
     setCounter: 'Counter set',
     setImmunity: 'Immunity set',
+    formatHpK: 'k'
 }
