@@ -49,19 +49,15 @@ const app = new Vue({
     },
     watch: {
         'firstHero.name': function (val, oldVal) {
-            if (val && !this.firstHero.speed) {
-                if (localStorage.getItem(val)) {
-                    this.firstHero.speed = localStorage.getItem(val);
-                }
+            if (val && localStorage.getItem(val)) {
+                this.firstHero.speed = localStorage.getItem(val);
             } else {
                 this.firstHero.speed = '';
             }
         },
         'secondHero.name': function (val, oldVal) {
-            if (val && !this.secondHero.speed) {
-                if (localStorage.getItem(val)) {
-                    this.secondHero.speed = localStorage.getItem(val);
-                }
+            if (val && localStorage.getItem(val)) {
+                this.secondHero.speed = localStorage.getItem(val);
             } else {
                 this.secondHero.speed = '';
             }
