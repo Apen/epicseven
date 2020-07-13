@@ -24,4 +24,5 @@ export const cn = {
     enemiesFirstArtifact: '神器',
     enemiesSecondArtifact: '神器',
     enemiesThirdArtifact: '神器',
+    formatHpK: 'k'
 }

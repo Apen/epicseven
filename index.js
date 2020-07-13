@@ -102,14 +102,14 @@ const app = new Vue({
             contentT1 += this.updateLine(this.enemiesFirstHero.second, this.firstHero.speed);
             contentT1 += this.updateLine(this.enemiesFirstHero.third, this.firstHero.speed);
             if (contentT1 !== '') {
-                this.report += "T1\r\n" + contentT1;
+                this.report += this.$t('t1')+"\r\n" + contentT1;
             }
             let contentT2 = '';
             contentT2 += this.updateLine(this.enemiesSecondHero.first, this.secondHero.speed);
             contentT2 += this.updateLine(this.enemiesSecondHero.second, this.secondHero.speed);
             contentT2 += this.updateLine(this.enemiesSecondHero.third, this.secondHero.speed);
             if (contentT2 !== '') {
-                this.report += "T2\r\n" + contentT2;
+                this.report += this.$t('t2')+"\r\n" + contentT2;
             }
         },
         updateLine: function (enemy, baseSpeed) {
