@@ -46,7 +46,7 @@
                     <label class="custom-control-label" for="darkSwitch">{{ $t('darkMode') }}</label>
                 </div>
                 <div class="locale-changer float-right mr-3">
-                    <select v-model="$i18n.locale" style="height: 26px;">
+                    <select v-model="$i18n.locale" style="height: 26px;" @change="changeLang()">
                         <option v-for="(lang, i) in langs" :value="lang.code">{{ lang.name }}</option>
                     </select>
                 </div>

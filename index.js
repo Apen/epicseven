@@ -24,7 +24,7 @@ const app = new Vue({
         'select-artifact': ComponentSelectArtifact
     },
     data: {
-        langs: [{"code":"en", "name":"English"}, {"code":"fr", "name":"Français"}, {"code":"cn", "name":"简体中文"},{"code":"tw", "name":"繁體中文"}],
+        langs: [{"code": "en", "name": "English"}, {"code": "fr", "name": "Français"}, {"code": "cn", "name": "简体中文"}, {"code": "tw", "name": "繁體中文"}],
         firstHero: {
             name: '',
             speed: ''
@@ -45,7 +45,8 @@ const app = new Vue({
         },
         tower: '',
         report: '',
-        darkMode: false
+        darkMode: false,
+        lang: i18n.locale
     },
     watch: {
         'firstHero.name': function (val, oldVal) {
@@ -93,7 +94,11 @@ const app = new Vue({
         },
         darkMode: function (val) {
             this.toggleDarkMode(val);
-        }
+        },
+        lang:
+            function (val) {
+                console.log('test');
+            }
     },
     methods: {
         updateReport: function () {
@@ -165,6 +170,9 @@ const app = new Vue({
                 this.darkMode = false;
             }
             localStorage.setItem('darkMode', val);
+        },
+        changeLang: function (val) {
+            localStorage.setItem('langCode', this.$i18n.locale);
         }
     },
     updated: function () {
@@ -175,12 +183,11 @@ const app = new Vue({
         if (localStorage.getItem('darkMode')) {
             this.toggleDarkMode(localStorage.getItem('darkMode'));
         }
+        let langCode = navigator.language || navigator.userLanguage;
+        if (langCode === "zh-TW" || langCode === "zh-HK" || langCode === "zh-MO") langCode = "tw";
+        if (langCode === "zh-CN" || langCode === "zh-SG") langCode = "cn";
         if (localStorage.getItem('langCode')) {
-            let langCode = localStorage.getItem('langCode');
-        } else {
-            let langCode = navigator.language || navigator.userLanguage;
-            if (langCode === "zh-TW" || langCode === "zh-HK" || langCode === "zh-MO") langCode = "tw";
-            if (langCode === "zh-CN" || langCode === "zh-SG") langCode = "cn";
+            langCode = localStorage.getItem('langCode');
         }
         i18n.locale = langCode;
     },
