@@ -45,8 +45,7 @@ const app = new Vue({
         },
         tower: '',
         report: '',
-        darkMode: false,
-        lang: i18n.locale
+        darkMode: false
     },
     watch: {
         'firstHero.name': function (val, oldVal) {
@@ -95,10 +94,6 @@ const app = new Vue({
         darkMode: function (val) {
             this.toggleDarkMode(val);
         },
-        lang:
-            function (val) {
-                console.log('test');
-            }
     },
     methods: {
         updateReport: function () {
