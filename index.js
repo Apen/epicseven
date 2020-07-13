@@ -164,6 +164,7 @@ const app = new Vue({
         },
         changeLang: function (val) {
             localStorage.setItem('langCode', this.$i18n.locale);
+            document.title = this.$t('title');
         }
     },
     updated: function () {
@@ -181,6 +182,7 @@ const app = new Vue({
             langCode = localStorage.getItem('langCode');
         }
         i18n.locale = langCode;
+        document.title = this.$t('title');
     },
 });
 
