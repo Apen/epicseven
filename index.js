@@ -17,8 +17,8 @@ const i18n = new VueI18n({
 })
 
 const app = new Vue({
-    i18n,
     el: '#app',
+    i18n,
     components: {
         'select-character': ComponentSelectCharacter,
         'select-artifact': ComponentSelectArtifact
@@ -102,14 +102,14 @@ const app = new Vue({
             contentT1 += this.updateLine(this.enemiesFirstHero.second, this.firstHero.speed);
             contentT1 += this.updateLine(this.enemiesFirstHero.third, this.firstHero.speed);
             if (contentT1 !== '') {
-                this.report += "T1\r\n" + contentT1;
+                this.report += this.$t('t1')+"\r\n" + contentT1;
             }
             let contentT2 = '';
             contentT2 += this.updateLine(this.enemiesSecondHero.first, this.secondHero.speed);
             contentT2 += this.updateLine(this.enemiesSecondHero.second, this.secondHero.speed);
             contentT2 += this.updateLine(this.enemiesSecondHero.third, this.secondHero.speed);
             if (contentT2 !== '') {
-                this.report += "T2\r\n" + contentT2;
+                this.report += this.$t('t2')+"\r\n" + contentT2;
             }
         },
         updateLine: function (enemy, baseSpeed) {
@@ -130,7 +130,13 @@ const app = new Vue({
             return content;
         },
         formatHp: function (num) {
-            return Math.abs(num) > 999 ? Math.sign(num) * ((Math.abs(num) / 1000).toFixed(1)) + this.$t('formatHpK') : Math.sign(num) * Math.abs(num)
+            if ($("#locale-changer :selected").val() === 'cn' ) {
+                return Math.abs(num) > 999 ? Math.sign(num) * ((Math.abs(num) / 10000).toFixed(2)) + this.$t('formatHpK') : Math.sign(num) * Math.abs(num);
+            } else if ($("#locale-changer :selected").val() === 'tw') {
+                return Math.abs(num) > 999 ? Math.sign(num) * ((Math.abs(num) / 10000).toFixed(2)) + this.$t('formatHpK') : Math.sign(num) * Math.abs(num);                 
+            } else {
+                return Math.abs(num) > 999 ? Math.sign(num) * ((Math.abs(num) / 1000).toFixed(1)) + this.$t('formatHpK') : Math.sign(num) * Math.abs(num);
+            }
         },
         copyToClipboard: function () {
             if ($('#report')) {
@@ -164,6 +170,7 @@ const app = new Vue({
         },
         changeLang: function (val) {
             localStorage.setItem('langCode', this.$i18n.locale);
+            document.title = this.$t('title');
         }
     },
     updated: function () {
@@ -181,6 +188,7 @@ const app = new Vue({
             langCode = localStorage.getItem('langCode');
         }
         i18n.locale = langCode;
+        document.title = this.$t('title');
     },
 });
 
