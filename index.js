@@ -129,7 +129,9 @@ const app = new Vue({
                 if (enemy.cr && baseSpeed) {
                     let cr = enemy.outspeed === true ? parseInt(enemy.cr) + 100 : enemy.cr;
                     cr = crBonus > 0 ? parseInt(cr) / (parseInt(crBonus) + 100) : cr;
-                    content += crBonus > 0 ? ' - ' + Math.round(cr * baseSpeed) + ' ' + this.$t('speed') : ' - ' + Math.round((cr * baseSpeed) / 100) + ' ' + this.$t('speed');
+                    let speed = crBonus > 0 ? Math.round(cr * baseSpeed) : Math.round((cr * baseSpeed) / 100);
+                    let speedRange = speed + '-' + Math.round(speed / 0.95);
+                    content += ' - ' + speedRange + ' ' + this.$t('speed');
                 }
                 content += enemy.counter ? ' - ' + this.$t('setCounter') : '';
                 content += enemy.immunity ? ' - ' + this.$t('setImmunity') : '';
