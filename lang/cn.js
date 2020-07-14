@@ -25,4 +25,6 @@ export const cn = {
     enemiesSecondArtifact: '神器',
     enemiesThirdArtifact: '神器',
     formatHpK: '万'
+    crBonus: '% 速攻值变化(退条)',
+    crBonusDesc: '例子 : 如果你一速英雄被巴萨尔退条，此处填写30 ',
 }
