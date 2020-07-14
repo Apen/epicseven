@@ -64,6 +64,9 @@ const app = new Vue({
                 this.secondHero.speed = '';
             }
         },
+        'firstHero.crBonus': function (val, oldVal) {
+            this.updateReport();
+        },
         'firstHero.speed': function (val) {
             if (this.firstHero.name && val) {
                 localStorage.setItem(this.firstHero.name, val);
@@ -73,6 +76,9 @@ const app = new Vue({
             if (this.secondHero.name && val) {
                 localStorage.setItem(this.secondHero.name, val);
             }
+        },
+        'secondHero.crBonus': function (val, oldVal) {
+            this.updateReport();
         },
         tower: function (val) {
             this.updateReport();
@@ -122,12 +128,10 @@ const app = new Vue({
                 content += enemy.hp ? ' - ' + this.formatHp(parseInt(enemy.hp)) + ' ' + this.$t('hp') : '';
                 if (enemy.cr && baseSpeed) {
                     let cr = enemy.outspeed === true ? parseInt(enemy.cr) + 100 : enemy.cr;
-                    console.log(cr);
-                    console.log(parseInt(crBonus)+100);
-                    cr = crBonus > 0 ? parseInt(cr) /(parseInt(crBonus)+100)   : cr;
-                    console.log(cr);
-                    content += crBonus > 0 ? ' - ' + Math.round(cr * baseSpeed) + ' ' + this.$t('speed'): ' - ' + Math.round((cr * baseSpeed)/100) + ' ' + this.$t('speed');
-                    console.log('speed : '+Math.round(cr * baseSpeed));
+                    cr = crBonus > 0 ? parseInt(cr) / (parseInt(crBonus) + 100) : cr;
+                    let speed = crBonus > 0 ? Math.round(cr * baseSpeed) : Math.round((cr * baseSpeed) / 100);
+                    let speedRange = speed + '-' + Math.round(speed / 0.95);
+                    content += ' - ' + speedRange + ' ' + this.$t('speed');
                 }
                 content += enemy.counter ? ' - ' + this.$t('setCounter') : '';
                 content += enemy.immunity ? ' - ' + this.$t('setImmunity') : '';
