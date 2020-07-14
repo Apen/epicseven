@@ -24,5 +24,7 @@ export const en = {
     enemiesThirdArtifact: 'Third artifact',
     setCounter: 'Counter set',
     setImmunity: 'Immunity set',
-    formatHpK: 'k'
+    formatHpK: 'k',
+    crBonus: '% CR manipulation',
+    crBonusDesc: 'Exemple : 30 if basar play before you',
 }
