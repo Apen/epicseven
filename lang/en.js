@@ -26,5 +26,5 @@ export const en = {
     setImmunity: 'Immunity set',
     formatHpK: 'k',
     crBonus: '% CR manipulation',
-    crBonusDesc: 'Exemple : 30 if basar play before you',
+    crBonusDesc: 'Example : 30 if basar play before you',
 }
