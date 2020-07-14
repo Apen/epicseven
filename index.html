@@ -269,7 +269,13 @@
                         </div>
                     </div>
                     <div class="col-md-3">
-
+                        <div class="input-group form-group">
+                            <input v-model="secondHero.crBonus" type="number" min="0" class="form-control"/>
+                            <div class="input-group-append">
+                                <span class="input-group-text">{{ $t('crBonus') }}</span>
+                            </div>
+                            <br/><small class="text-muted"> {{ $t('crBonusDesc') }}</small>
+                        </div>
                     </div>
                 </div>
 

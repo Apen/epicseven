@@ -123,10 +123,11 @@ const app = new Vue({
                 if (enemy.cr && baseSpeed) {
                     let cr = enemy.outspeed === true ? parseInt(enemy.cr) + 100 : enemy.cr;
                     console.log(cr);
-                    cr = crBonus > 0 ? parseInt(cr) + parseInt(crBonus) : cr;
+                    console.log(parseInt(crBonus)+100);
+                    cr = crBonus > 0 ? parseInt(cr) /(parseInt(crBonus)+100)   : cr;
                     console.log(cr);
-                    content += ' - ' + Math.round((cr * baseSpeed) / 100) + ' ' + this.$t('speed');
-                    console.log('speed : '+Math.round((cr * baseSpeed) / 100));
+                    content += crBonus > 0 ? ' - ' + Math.round(cr * baseSpeed) + ' ' + this.$t('speed'): ' - ' + Math.round((cr * baseSpeed)/100) + ' ' + this.$t('speed');
+                    console.log('speed : '+Math.round(cr * baseSpeed));
                 }
                 content += enemy.counter ? ' - ' + this.$t('setCounter') : '';
                 content += enemy.immunity ? ' - ' + this.$t('setImmunity') : '';
@@ -137,9 +138,9 @@ const app = new Vue({
         },
         formatHp: function (num) {
             if ($("#locale-changer :selected").val() === 'cn') {
-                return Math.abs(num) > 999 ? Math.sign(num) * ((Math.abs(num) / 10000).toFixed(2)) + this.$t('formatHpK') : Math.sign(num) * Math.abs(num);
+                return Math.abs(num) > 9999 ? Math.sign(num) * ((Math.abs(num) / 10000).toFixed(2)) + this.$t('formatHpK') : Math.sign(num) * Math.abs(num);
             } else if ($("#locale-changer :selected").val() === 'tw') {
-                return Math.abs(num) > 999 ? Math.sign(num) * ((Math.abs(num) / 10000).toFixed(2)) + this.$t('formatHpK') : Math.sign(num) * Math.abs(num);
+                return Math.abs(num) > 9999 ? Math.sign(num) * ((Math.abs(num) / 10000).toFixed(2)) + this.$t('formatHpK') : Math.sign(num) * Math.abs(num);
             } else {
                 return Math.abs(num) > 999 ? Math.sign(num) * ((Math.abs(num) / 1000).toFixed(1)) + this.$t('formatHpK') : Math.sign(num) * Math.abs(num);
             }
