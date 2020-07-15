@@ -26,5 +26,7 @@ export const tw = {
     enemiesThirdArtifact: '神器',
     formatHpK: '萬',
     crBonus: '% 速攻值變化(退條)',
-    crBonusDesc: '例子 : 如果你一速英雄被巴薩爾退條，此處填寫30'
+    crBonusDesc: '例子 : 如果你一速英雄被巴薩爾退條，此處填寫30',
+    crPush: '% 速攻值變化(拉條)',
+    crPushDesc: '例子 : 如果你一速英雄被蘿季超車拉條，此處填寫25',
 }

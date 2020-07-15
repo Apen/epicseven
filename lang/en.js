@@ -25,6 +25,8 @@ export const en = {
     setCounter: 'Counter set',
     setImmunity: 'Immunity set',
     formatHpK: 'k',
-    crBonus: '% CR manipulation',
+    crBonus: '% CR Push back',
     crBonusDesc: 'Example : 30 if basar play before you',
+    crPush: '% CR Push',
+    crPushDesc: 'Example : 25 if rose play before you',
 }

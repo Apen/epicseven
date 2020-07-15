@@ -29,11 +29,13 @@ const app = new Vue({
             name: '',
             speed: '',
             crBonus: '',
+            crPush: '',
         },
         secondHero: {
             name: '',
             speed: '',
             crBonus: '',
+            crPush: '',
         },
         enemiesFirstHero: {
             first: {},
@@ -67,6 +69,9 @@ const app = new Vue({
         'firstHero.crBonus': function (val, oldVal) {
             this.updateReport();
         },
+        'firstHero.crPush': function (val, oldVal) {
+            this.updateReport();
+        },
         'firstHero.speed': function (val) {
             if (this.firstHero.name && val) {
                 localStorage.setItem(this.firstHero.name, val);
@@ -78,6 +83,9 @@ const app = new Vue({
             }
         },
         'secondHero.crBonus': function (val, oldVal) {
+            this.updateReport();
+        },
+        'secondHero.crPush': function (val, oldVal) {
             this.updateReport();
         },
         tower: function (val) {
@@ -106,21 +114,21 @@ const app = new Vue({
                 this.report += "** " + this.tower + " **\r\n"
             }
             let contentT1 = '';
-            contentT1 += this.updateLine(this.enemiesFirstHero.first, this.firstHero.speed, this.firstHero.crBonus);
-            contentT1 += this.updateLine(this.enemiesFirstHero.second, this.firstHero.speed, this.firstHero.crBonus);
-            contentT1 += this.updateLine(this.enemiesFirstHero.third, this.firstHero.speed, this.firstHero.crBonus);
+            contentT1 += this.updateLine(this.enemiesFirstHero.first, this.firstHero.speed, this.firstHero.crBonus, this.firstHero.crPush);
+            contentT1 += this.updateLine(this.enemiesFirstHero.second, this.firstHero.speed, this.firstHero.crBonus, this.firstHero.crPush);
+            contentT1 += this.updateLine(this.enemiesFirstHero.third, this.firstHero.speed, this.firstHero.crBonus, this.firstHero.crPush);
             if (contentT1 !== '') {
                 this.report += this.$t('t1') + "\r\n" + contentT1;
             }
             let contentT2 = '';
-            contentT2 += this.updateLine(this.enemiesSecondHero.first, this.secondHero.speed, this.secondHero.crBonus);
-            contentT2 += this.updateLine(this.enemiesSecondHero.second, this.secondHero.speed, this.secondHero.crBonus);
-            contentT2 += this.updateLine(this.enemiesSecondHero.third, this.secondHero.speed, this.secondHero.crBonus);
+            contentT2 += this.updateLine(this.enemiesSecondHero.first, this.secondHero.speed, this.secondHero.crBonus, this.secondHero.crPush);
+            contentT2 += this.updateLine(this.enemiesSecondHero.second, this.secondHero.speed, this.secondHero.crBonus, this.secondHero.crPush);
+            contentT2 += this.updateLine(this.enemiesSecondHero.third, this.secondHero.speed, this.secondHero.crBonus, this.secondHero.crPush);
             if (contentT2 !== '') {
                 this.report += this.$t('t2') + "\r\n" + contentT2;
             }
         },
-        updateLine: function (enemy, baseSpeed, crBonus = 0) {
+        updateLine: function (enemy, baseSpeed, crBonus = 0, crPush = 0) {
             let content = '';
             if (enemy.name) {
                 content += enemy.name;
@@ -129,6 +137,7 @@ const app = new Vue({
                 if (enemy.cr && baseSpeed) {
                     let cr = enemy.outspeed === true ? parseInt(enemy.cr) + 100 : enemy.cr;
                     cr = crBonus > 0 ? parseInt(cr) / (parseInt(crBonus) + 100) : cr;
+                    cr = crPush > 0 ? parseInt(cr)-parseInt(crPush) : cr;
                     let speed = crBonus > 0 ? Math.round(cr * baseSpeed) : Math.round((cr * baseSpeed) / 100);
                     let speedRange = speed + '-' + Math.round(speed / 0.95);
                     content += ' - ' + speedRange + ' ' + this.$t('speed');
