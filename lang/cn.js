@@ -26,5 +26,7 @@ export const cn = {
     enemiesThirdArtifact: '神器',
     formatHpK: '万',
     crBonus: '% 速攻值变化(退条)',
-    crBonusDesc: '例子 : 如果你一速英雄被巴萨尔退条，此处填写30'
+    crBonusDesc: '例子 : 如果你一速英雄被巴萨尔退条，此处填写30',
+    crPush: '% 速攻值变化(拉条)',
+    crPushDesc: '例子 : 如果你一速英雄被萝季超车拉条，此处填写25',
 }
