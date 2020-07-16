@@ -25,8 +25,8 @@ export const fr = {
     setCounter: 'Set contre',
     setImmunity: 'Set immunité',
     formatHpK: 'k',
-    crBonus: '% d\'ardeur au combat diminuée',
+    crBonus: '% d\'ardeur diminuée',
     crBonusDesc: 'Exemple : 30 si basar joue avant vous',
-    crPush: '% d\'ardeur au combat augmentée',
+    crPush: '% d\'ardeur augmentée',
     crPushDesc: 'Exemple : 25 si rose joue avant vous',
 }
