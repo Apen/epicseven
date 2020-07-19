@@ -1,11 +1,17 @@
 # python module needed: rjsmin,  to install it: pip install rjsmin
 # To update data just run: python GenerateDatas.py
-import urllib.request, json, rjsmin
+import urllib.request, json, rjsmin, os
+
+path = os.path.dirname(os.path.abspath(__file__))
+print('Working directory: '+path)
+os.chdir(path)
+os.makedirs('../assets/js/', exist_ok=True)
 
 langs=[{"url": "en","code": "en", "name": "English"}, {"url": "fr","code": "fr", "name": "French"}, {"url": "cn","code": "cn", "name": "Chinese Simplified"}, {"url": "zht","code": "tw", "name": "Chinese Traditional"}]
 opener = urllib.request.build_opener()
 opener.addheaders = [('User-agent', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36')]
 urllib.request.install_opener(opener)
+print('Start generating js files...')
 
 for lang in langs:
     url = 'https://api.epicsevendb.com/hero?lang='+lang.get("url")
@@ -58,4 +64,5 @@ for lang in langs:
     
     with open("../assets/js/"+lang.get("code")+".artifacts.js", "w", encoding='utf-8') as outfile: 
         outfile.write(back_json) 
+    print('File saved to:'+os.path.abspath("../assets/js/"+lang.get("code")+".artifacts.js"))
     print(lang.get("name")+' Finish')
