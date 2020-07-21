@@ -37,8 +37,11 @@
 
 <script>
     import ComponentSelectCharacter from "./SelectCharacter"
+
     export default {
-        props: ['hero'],
+        props: {
+            hero: Object,
+        },
         components: {
             'SelectCharacter': ComponentSelectCharacter,
         },

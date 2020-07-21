@@ -54,6 +54,7 @@
 <script>
     import ComponentSelectCharacter from "./SelectCharacter"
     import ComponentSelectArtifact from "./SelectArtifact"
+
     export default {
         props: {
             enemy: Object,
