@@ -260,12 +260,12 @@
             },
             copyToClipboardSL: function () {
                 if ($('#report')) {
-                    var copyText = document.querySelector("#report");
-                    var ML = copyText._value;
-                    var SL = ML.replace(/(\r\n|\n|\r)/gm, " ");
-                    var slcopy = document.getElementById("sl");
+                    let copyText = document.querySelector("#report");
+                    let ML = copyText._value;
+                    let SL = ML.replace(/(\r\n|\n|\r)/gm, " ");
+                    let slcopy = document.getElementById("sl");
                     slcopy.value = SL;
-                    SL.select();
+                    slcopy.select();
                     document.execCommand("copy");
                 }
             },
