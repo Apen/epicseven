@@ -341,8 +341,8 @@ export default {
           let cr =
             enemy.outspeed === true ? parseInt(enemy.cr) + 100 : enemy.cr;
           cr = crPushAlly > 0 ? parseInt(cr) + parseInt(crPushAlly) : cr;
-          cr = crBonus > 0 ? parseInt(cr) / (parseInt(crBonus) + 100) : cr;
           cr = crPush > 0 ? parseInt(cr) - parseInt(crPush) : cr;
+          cr = crBonus > 0 ? parseInt(cr) / (parseInt(crBonus) + 100) : cr;
           let speed =
             crBonus > 0
               ? Math.round(cr * baseSpeed)
