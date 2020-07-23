@@ -31,4 +31,6 @@ export const cn = {
   crBonusDesc: "例子 : 如果你一速英雄被巴萨尔退条，此处填写30",
   crPush: "% 速攻值变化(拉条)",
   crPushDesc: "例子 : 如果你一速英雄被萝季超车拉条，此处填写25",
+  crPushAlly: "% 速攻值变化(队友拉条)",
+  crPushAllyDesc: "例子 : 如果你的大将法济斯被敌人攻击，此处填写15",
 };
