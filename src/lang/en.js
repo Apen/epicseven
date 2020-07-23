@@ -31,4 +31,6 @@ export const en = {
   crBonusDesc: "Example : 30 if basar play before you",
   crPush: "% CR Push",
   crPushDesc: "Example : 25 if rose play before you",
+  crPushAlly: "% CR Push for allies",
+  crPushAllyDesc: "Example : 15 if your general purgis attacked by enemies",
 };

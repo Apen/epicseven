@@ -185,13 +185,15 @@ export default {
         name: "",
         speed: "",
         crBonus: "",
-        crPush: ""
+        crPush: "",
+        crPushAlly: ""
       },
       secondHero: {
         name: "",
         speed: "",
         crBonus: "",
-        crPush: ""
+        crPush: "",
+        crPushAlly: ""
       },
       enemiesFirstHero: {
         first: {},
@@ -229,6 +231,9 @@ export default {
     "firstHero.crPush": function() {
       this.updateReport();
     },
+    "firstHero.crPushAlly": function() {
+      this.updateReport();
+    },
     "firstHero.speed": function(val) {
       if (this.firstHero.name && val) {
         localStorage.setItem(this.firstHero.name, val);
@@ -243,6 +248,9 @@ export default {
       this.updateReport();
     },
     "secondHero.crPush": function() {
+      this.updateReport();
+    },
+    "secondHero.crPushAlly": function() {
       this.updateReport();
     },
     tower: function() {
@@ -275,19 +283,22 @@ export default {
         this.enemiesFirstHero.first,
         this.firstHero.speed,
         this.firstHero.crBonus,
-        this.firstHero.crPush
+        this.firstHero.crPush,
+        this.firstHero.crPushAlly
       );
       contentT1 += this.updateLine(
         this.enemiesFirstHero.second,
         this.firstHero.speed,
         this.firstHero.crBonus,
-        this.firstHero.crPush
+        this.firstHero.crPush,
+        this.firstHero.crPushAlly
       );
       contentT1 += this.updateLine(
         this.enemiesFirstHero.third,
         this.firstHero.speed,
         this.firstHero.crBonus,
-        this.firstHero.crPush
+        this.firstHero.crPush,
+        this.firstHero.crPushAlly
       );
       if (contentT1 !== "") {
         this.report += this.$t("t1") + "\r\n" + contentT1;
@@ -297,25 +308,28 @@ export default {
         this.enemiesSecondHero.first,
         this.secondHero.speed,
         this.secondHero.crBonus,
-        this.secondHero.crPush
+        this.secondHero.crPush,
+        this.secondHero.crPushAlly
       );
       contentT2 += this.updateLine(
         this.enemiesSecondHero.second,
         this.secondHero.speed,
         this.secondHero.crBonus,
-        this.secondHero.crPush
+        this.secondHero.crPush,
+        this.secondHero.crPushAlly
       );
       contentT2 += this.updateLine(
         this.enemiesSecondHero.third,
         this.secondHero.speed,
         this.secondHero.crBonus,
-        this.secondHero.crPush
+        this.secondHero.crPush,
+        this.secondHero.crPushAlly
       );
       if (contentT2 !== "") {
         this.report += this.$t("t2") + "\r\n" + contentT2;
       }
     },
-    updateLine: function(enemy, baseSpeed, crBonus = 0, crPush = 0) {
+    updateLine: function(enemy, baseSpeed, crBonus = 0, crPush = 0, crPushAlly = 0) {
       let content = "";
       if (enemy.name) {
         content += enemy.name;
@@ -328,6 +342,7 @@ export default {
             enemy.outspeed === true ? parseInt(enemy.cr) + 100 : enemy.cr;
           cr = crBonus > 0 ? parseInt(cr) / (parseInt(crBonus) + 100) : cr;
           cr = crPush > 0 ? parseInt(cr) - parseInt(crPush) : cr;
+          cr = crPushAlly > 0 ? parseInt(cr) + parseInt(crPushAlly) : cr;
           let speed =
             crBonus > 0
               ? Math.round(cr * baseSpeed)

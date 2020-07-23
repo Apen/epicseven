@@ -27,8 +27,10 @@ export const fr = {
   setCounter: "Set contre",
   setImmunity: "Set immunité",
   formatHpK: "k",
-  crBonus: "% d'ardeur diminuée",
+  crBonus: "% CR diminuée",
   crBonusDesc: "Exemple : 30 si basar joue avant vous",
-  crPush: "% d'ardeur augmentée",
+  crPush: "% CR augmentée",
   crPushDesc: "Exemple : 25 si rose joue avant vous",
+  crPushAlly: "% CR augmentée pour vos alliés",
+  crPushAllyDesc: "Exemple : 15 si votre général purrgis est attaqué par des ennemis",
 };
