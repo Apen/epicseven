@@ -55,7 +55,7 @@ for lang in langs:
         my_dict['name']=item.get('name')
         my_dict['rarity']=item.get('rarity')
         my_dict['role']=item.get('role')
-        if my_dict['rarity'] > 2:
+        if my_dict['rarity'] > 2 and my_dict['_id'] != 'straze':
             artifacts.append(my_dict)
       
     back_json=json.dumps(artifacts, indent = 4, ensure_ascii=False)
