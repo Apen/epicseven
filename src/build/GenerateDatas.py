@@ -30,7 +30,7 @@ for lang in langs:
         my_dict['role']=item.get('role')
         my_dict['attribute']=item.get('attribute')
         my_dict['zodiac']=item.get('zodiac')
-        if my_dict['rarity'] > 1:
+        if my_dict['rarity'] > 1 and my_dict['_id'] != 'straze':
             characters.append(my_dict)
       
     back_json=json.dumps(characters, indent = 4, ensure_ascii=False)
