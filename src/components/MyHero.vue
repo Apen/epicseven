@@ -46,6 +46,11 @@
                 <br/><small class="text-muted"> {{ $t('crPushAllyDesc') }}</small>
             </div>
         </div>
+        <div class="col-md-3">
+            <label class="mt-md-2">
+                        <input type="checkbox" v-model="hero.speedDown"/> <img src="assets/images/Speed_down.png"/>
+            </label>
+        </div>
         
         </div>
     </div>

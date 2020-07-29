@@ -186,14 +186,16 @@ export default {
         speed: "",
         crBonus: "",
         crPush: "",
-        crPushAlly: ""
+        crPushAlly: "",
+        speedDown: "",
       },
       secondHero: {
         name: "",
         speed: "",
         crBonus: "",
         crPush: "",
-        crPushAlly: ""
+        crPushAlly: "",
+        speedDown: "",
       },
       enemiesFirstHero: {
         first: {},
@@ -234,6 +236,9 @@ export default {
     "firstHero.crPushAlly": function() {
       this.updateReport();
     },
+    "firstHero.speedDown": function() {
+      this.updateReport();
+    },
     "firstHero.speed": function(val) {
       if (this.firstHero.name && val) {
         localStorage.setItem(this.firstHero.name, val);
@@ -251,6 +256,9 @@ export default {
       this.updateReport();
     },
     "secondHero.crPushAlly": function() {
+      this.updateReport();
+    },
+    "secondHero.speedDown": function() {
       this.updateReport();
     },
     tower: function() {
@@ -284,21 +292,24 @@ export default {
         this.firstHero.speed,
         this.firstHero.crBonus,
         this.firstHero.crPush,
-        this.firstHero.crPushAlly
+        this.firstHero.crPushAlly,
+        this.firstHero.speedDown,
       );
       contentT1 += this.updateLine(
         this.enemiesFirstHero.second,
         this.firstHero.speed,
         this.firstHero.crBonus,
         this.firstHero.crPush,
-        this.firstHero.crPushAlly
+        this.firstHero.crPushAlly,
+        this.firstHero.speedDown,
       );
       contentT1 += this.updateLine(
         this.enemiesFirstHero.third,
         this.firstHero.speed,
         this.firstHero.crBonus,
         this.firstHero.crPush,
-        this.firstHero.crPushAlly
+        this.firstHero.crPushAlly,
+        this.firstHero.speedDown,
       );
       if (contentT1 !== "") {
         this.report += this.$t("t1") + "\r\n" + contentT1;
@@ -309,27 +320,30 @@ export default {
         this.secondHero.speed,
         this.secondHero.crBonus,
         this.secondHero.crPush,
-        this.secondHero.crPushAlly
+        this.secondHero.crPushAlly,
+        this.secondHero.speedDown,
       );
       contentT2 += this.updateLine(
         this.enemiesSecondHero.second,
         this.secondHero.speed,
         this.secondHero.crBonus,
         this.secondHero.crPush,
-        this.secondHero.crPushAlly
+        this.secondHero.crPushAlly,
+        this.secondHero.speedDown,
       );
       contentT2 += this.updateLine(
         this.enemiesSecondHero.third,
         this.secondHero.speed,
         this.secondHero.crBonus,
         this.secondHero.crPush,
-        this.secondHero.crPushAlly
+        this.secondHero.crPushAlly,
+        this.secondHero.speedDown,
       );
       if (contentT2 !== "") {
         this.report += this.$t("t2") + "\r\n" + contentT2;
       }
     },
-    updateLine: function(enemy, baseSpeed, crBonus = 0, crPush = 0, crPushAlly = 0) {
+    updateLine: function(enemy, baseSpeed, crBonus = 0, crPush = 0, crPushAlly = 0, speedDown,) {
       let content = "";
       if (enemy.name) {
         content += enemy.name;
@@ -342,12 +356,15 @@ export default {
             enemy.outspeed === true ? parseInt(enemy.cr) + 100 : enemy.cr;
           cr = crPushAlly > 0 ? parseInt(cr) + parseInt(crPushAlly) : cr;
           cr = crPush > 0 ? parseInt(cr) - parseInt(crPush) : cr;
-          cr = crBonus > 0 ? parseInt(cr) / (parseInt(crBonus) + 100) : cr;
+          cr = crBonus > 0 ? parseInt(cr) * 100/ (parseInt(crBonus) + 100) : cr;
           let speed =
-            crBonus > 0
-              ? Math.round(cr * baseSpeed)
+            speedDown
+              ? Math.round(cr/(100/baseSpeed+(cr-100)/(baseSpeed*0.7)))
               : Math.round((cr * baseSpeed) / 100);
-          let speedRange = speed + "-" + Math.round(speed / 0.95);
+          let speedRange =
+            enemy.outspeed === true 
+              ? Math.max(speed, baseSpeed) + "-" + Math.round(speed / 0.95)
+              : speed + "-" + Math.round(speed / 0.95);
           content += " - " + speedRange + " " + this.$t("speed");
         }
         content += enemy.counter ? " - " + this.$t("setCounter") : "";
