@@ -361,10 +361,7 @@ export default {
             speedDown
               ? Math.round(cr/(100/baseSpeed+(cr-100)/(baseSpeed*0.7)))
               : Math.round((cr * baseSpeed) / 100);
-          let speedRange =
-            enemy.outspeed === true 
-              ? Math.max(speed, baseSpeed) + "-" + Math.round(speed / 0.95)
-              : speed + "-" + Math.round(speed / 0.95);
+          let speedRange =  speed + "-" + Math.round(speed / 0.95);
           content += " - " + speedRange + " " + this.$t("speed");
         }
         content += enemy.counter ? " - " + this.$t("setCounter") : "";
