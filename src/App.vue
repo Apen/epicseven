@@ -357,11 +357,15 @@ export default {
           cr = crPushAlly > 0 ? parseInt(cr) + parseInt(crPushAlly) : cr;
           cr = crPush > 0 ? parseInt(cr) - parseInt(crPush) : cr;
           cr = crBonus > 0 ? parseInt(cr) * 100/ (parseInt(crBonus) + 100) : cr;
-          let speed =
+          let speedmin =
             speedDown
-              ? Math.round(cr/(100/baseSpeed+(cr-100)/(baseSpeed*0.7)))
-              : Math.round((cr * baseSpeed) / 100);
-          let speedRange =  speed + "-" + Math.round(speed / 0.95);
+              ? Math.round((cr-5)/(100/baseSpeed+(cr-5-100)/(baseSpeed*0.7)))
+              : Math.round(((cr-5) * baseSpeed) / 100);
+          let speedmax =
+            speedDown
+              ? Math.round(cr/(95/baseSpeed+(cr-95)/(baseSpeed*0.7)))
+              : Math.round((cr * baseSpeed) / 95);
+          let speedRange =  Math.round(speedmin) + "-" + Math.round(speedmax);
           content += " - " + speedRange + " " + this.$t("speed");
         }
         content += enemy.counter ? " - " + this.$t("setCounter") : "";
