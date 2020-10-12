@@ -24,8 +24,20 @@ function getCharacters($lang = 'en')
         if ($lang === 'zht') {
             $lang = 'tw';
         }
+        $datas = json_decode($matches[1], true);
+        $datasToWrite = [];
+        foreach ($datas as $line) {
+            $datasToWrite[] = [
+                '_id' => $line['_id'],
+                'name' => $line['name'],
+                'rarity' => $line['rarity'],
+                'role' => $line['role'],
+                'attribute' => $line['attribute'],
+                'zodiac' => $line['zodiac'],
+            ];
+        }
         $filename = 'assets/js/' . $lang . '.characters.js';
-        $content = 'export const ' . $lang . ' = ' . $matches[1] . ';';
+        $content = 'export const ' . $lang . ' = ' . json_encode($datasToWrite) . ';';
         file_put_contents($filename, $content);
     }
 }
@@ -40,8 +52,20 @@ function getArtifacts($lang = 'en')
         if ($lang === 'zht') {
             $lang = 'tw';
         }
+        $datas = json_decode($matches[1], true);
+        $datasToWrite = [];
+        foreach ($datas as $line) {
+            if ($line['rarity'] > 2) {
+                $datasToWrite[] = [
+                    '_id' => $line['_id'],
+                    'name' => $line['name'],
+                    'rarity' => $line['rarity'],
+                    'role' => $line['role'],
+                ];
+            }
+        }
         $filename = 'assets/js/' . $lang . '.artifacts.js';
-        $content = 'export const ' . $lang . ' = ' . $matches[1] . ';';
+        $content = 'export const ' . $lang . ' = ' . json_encode($datasToWrite) . ';';
         file_put_contents($filename, $content);
     }
 }
