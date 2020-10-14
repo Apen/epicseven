@@ -12,12 +12,14 @@
     import {fr} from "@/assets/js/fr.artifacts";
     import {cn} from "@/assets/js/cn.artifacts";
     import {tw} from "@/assets/js/tw.artifacts";
+    import {nicknames} from "@/assets/js/nicknames";
 
     export default {
         props: ['title', 'value'],
         data: function () {
             return {
                 artifacts: this.getItems(),
+                nicknames: nicknames,
             }
         },
         watch: {
@@ -52,6 +54,11 @@
                         break;
                 }
                 return artifacts;
+            },
+            getTokens(item) {
+                if (item._id && nicknames[item._id]) {
+                    return nicknames[item._id];
+                }
             }
         }
     }
