@@ -1,4 +1,5 @@
 export const nicknames = [];
+//characters
 nicknames["achates"] = "火奶";
 nicknames["aither"] = "小王子";
 nicknames["alencia"] = "姨妈龙 龙姨妈 姨媽龍 龍姨媽";
@@ -155,5 +156,13 @@ nicknames["watcher-schuri"] = "光修里 光修理 光修裏";
 nicknames["yufine"] = "木龙 木龍";
 nicknames["yuna"] = "学生会长 學生會長";
 nicknames["zerato"] = "水杰 冰杰 冰法 水傑 冰傑";
-nicknames["aurius"] = "分摊";
-nicknames["moonlight-dreamblade"] = "闪避刀";
+//artifacts
+nicknames["alexas-basket"] = "大公鸡 大攻击 大公雞 大攻擊";
+nicknames["aurius"] = "分摊 分攤";
+nicknames["moonlight-dreamblade"] = "闪避刀 閃避刀";
+nicknames["holy-sacrifice"] = "复活 複活";
+nicknames["elbris-ritual-sword"] = "大宝剑 大寶劍";
+nicknames["proof-of-valor"] = "工会神器 公会神器 工會神器 公會神器";
+nicknames["timeless-anchor"] = "船锚 船錨";
+nicknames["magarahas-tome"] = "飙车书 飆車書";
+nicknames["tagehels-ancient-book"] = "魂书 魂書";

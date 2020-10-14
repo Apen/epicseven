@@ -1,6 +1,6 @@
 <template>
     <select :value="value" @change="select" class="selectpicker" :title="title" data-live-search="true" data-width="100%">
-        <option v-for="item in artifacts" :key="item._id">
+        <option v-for="item in artifacts" :key="item._id" :data-tokens="getTokens(item)">
             {{item.name}}
         </option>
     </select>
