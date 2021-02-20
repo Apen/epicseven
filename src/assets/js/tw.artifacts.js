@@ -181,6 +181,12 @@ export const tw = [
     role: 'knight',
   },
   {
+    _id: 'knowledge-seed',
+    name: '\u77e5\u8b58\u7a2e\u5b50',
+    rarity: 5,
+    role: 'mage',
+  },
+  {
     _id: 'last-teatime',
     name: '\u6700\u5f8c\u7684\u4e0b\u5348\u8336',
     rarity: 5,
@@ -200,12 +206,6 @@ export const tw = [
     role: 'warrior',
   },
   { _id: 'ms-confille', name: 'Miss Confile', rarity: 5, role: 'ranger' },
-  {
-    _id: 'nahas-wreath',
-    name: '\u6b98\u9177\u7684\u73a9\u7b11',
-    rarity: 5,
-    role: '',
-  },
   {
     _id: 'necro-undine',
     name: '\u60e1\u9b54\uff06\u5929\u4f7f',
@@ -473,18 +473,11 @@ export const tw = [
     role: '',
   },
   {
-    _id: 'grade-1-seal-restraints',
-    name: '\u656c\u5d84\u65b0\u7684\u6642\u4ee3',
-    rarity: 4,
-    role: '',
-  },
-  {
     _id: 'hell-cutter',
     name: '\u5730\u7344\u5207\u5272\u6a5f',
     rarity: 4,
     role: 'warrior',
   },
-  { _id: 'hellfire-demonblade', name: 'XVI. The Tower', rarity: 4, role: '' },
   {
     _id: 'hilag-lance',
     name: '\u932b\u62c9\u9769\u9a0e\u69cd',

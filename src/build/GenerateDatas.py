@@ -1,6 +1,5 @@
-# python module needed: rjsmin,  to install it: pip install rjsmin
 # To update data just run: python GenerateDatas.py
-import urllib.request, json, rjsmin, os
+import urllib.request, json, os
 
 path = os.path.dirname(os.path.abspath(__file__))
 print('Working directory: '+path)
@@ -30,12 +29,11 @@ for lang in langs:
         my_dict['role']=item.get('role')
         my_dict['attribute']=item.get('attribute')
         my_dict['zodiac']=item.get('zodiac')
-        if my_dict['rarity'] > 1 and my_dict['_id'] != 'straze':
+        if my_dict['rarity'] > 1:
             characters.append(my_dict)
       
-    back_json=json.dumps(characters, indent = 4, ensure_ascii=False)
-
-    back_json=rjsmin.jsmin("export const "+lang.get("code")+" ="+back_json+";")
+    back_json=json.dumps(characters, indent = 4, ensure_ascii=True)
+    back_json = 'export const '+lang.get("code")+' = ' +back_json + ';'
     
     with open("../assets/js/"+lang.get("code")+".characters.js", "w", encoding='utf-8') as outfile: 
         outfile.write(back_json)
@@ -58,9 +56,8 @@ for lang in langs:
         if my_dict['rarity'] > 2:
             artifacts.append(my_dict)
       
-    back_json=json.dumps(artifacts, indent = 4, ensure_ascii=False)
-    
-    back_json=rjsmin.jsmin("export const "+lang.get("code")+" ="+back_json+";")
+    back_json=json.dumps(artifacts, indent = 4, ensure_ascii=True)
+    back_json = 'export const '+lang.get("code")+' = ' +back_json + ';'
     
     with open("../assets/js/"+lang.get("code")+".artifacts.js", "w", encoding='utf-8') as outfile: 
         outfile.write(back_json) 

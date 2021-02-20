@@ -456,6 +456,14 @@ export const cn = [
     zodiac: 'maiden',
   },
   {
+    _id: 'politis',
+    name: '\u4f5b\u91cc\u8482\u4e1d',
+    rarity: 5,
+    role: 'mage',
+    attribute: 'fire',
+    zodiac: 'twins',
+  },
+  {
     _id: 'ravi',
     name: '\u841d\u83f2',
     rarity: 5,
@@ -558,14 +566,6 @@ export const cn = [
     role: 'mage',
     attribute: 'dark',
     zodiac: 'twins',
-  },
-  {
-    _id: 'straze',
-    name: 'MISSING_TRANSLATION_VALUE(chrn_c1034)',
-    rarity: 5,
-    role: 'warrior',
-    attribute: 'dark',
-    zodiac: 'archer',
   },
   {
     _id: 'tamarinne',
@@ -1630,21 +1630,5 @@ export const cn = [
     role: 'mage',
     attribute: 'fire',
     zodiac: 'waterbearer',
-  },
-  {
-    _id: 'rande',
-    name: 'MISSING_TRANSLATION_VALUE(chrn_c1026)',
-    rarity: 1,
-    role: 'assassin',
-    attribute: 'none',
-    zodiac: 'twins',
-  },
-  {
-    _id: 'raqueas',
-    name: 'MISSING_TRANSLATION_VALUE(chrn_c1025)',
-    rarity: 1,
-    role: 'warrior',
-    attribute: 'none',
-    zodiac: 'maiden',
   },
 ];

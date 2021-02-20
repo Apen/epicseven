@@ -140,6 +140,7 @@ export const fr = [
     rarity: 5,
     role: 'knight',
   },
+  { _id: 'knowledge-seed', name: 'Graine du savoir', rarity: 5, role: 'mage' },
   {
     _id: 'last-teatime',
     name: 'Derni\u00e8re tasse de th\u00e9',
@@ -160,7 +161,6 @@ export const fr = [
     role: 'warrior',
   },
   { _id: 'ms-confille', name: 'Ms. Confille', rarity: 5, role: 'ranger' },
-  { _id: 'nahas-wreath', name: 'Farce atroce', rarity: 5, role: '' },
   { _id: 'necro-undine', name: 'Necro et Undine', rarity: 5, role: 'mage' },
   { _id: 'noble-oath', name: 'Noble serment', rarity: 5, role: 'knight' },
   {
@@ -342,14 +342,7 @@ export const fr = [
     rarity: 4,
     role: '',
   },
-  {
-    _id: 'grade-1-seal-restraints',
-    name: 'Pour une nouvelle \u00e8re',
-    rarity: 4,
-    role: '',
-  },
   { _id: 'hell-cutter', name: 'Coupe-enfer', rarity: 4, role: 'warrior' },
-  { _id: 'hellfire-demonblade', name: 'XVI. La Tour', rarity: 4, role: '' },
   { _id: 'hilag-lance', name: "Lance d'Hilag", rarity: 4, role: 'knight' },
   { _id: 'iela-violin', name: "Violon d'Iela", rarity: 4, role: 'mage' },
   { _id: 'infinity-basket', name: 'Panier infini', rarity: 4, role: 'ranger' },

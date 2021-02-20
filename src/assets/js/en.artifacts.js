@@ -100,6 +100,7 @@ export const en = [
     rarity: 5,
     role: 'knight',
   },
+  { _id: 'knowledge-seed', name: 'Knowledge Seed', rarity: 5, role: 'mage' },
   { _id: 'last-teatime', name: 'Last Teatime', rarity: 5, role: 'mage' },
   {
     _id: 'manica-of-control',
@@ -115,7 +116,6 @@ export const en = [
     role: 'warrior',
   },
   { _id: 'ms-confille', name: 'Ms. Confille', rarity: 5, role: 'ranger' },
-  { _id: 'nahas-wreath', name: 'Cruel Mischief', rarity: 5, role: '' },
   { _id: 'necro-undine', name: 'Necro & Undine', rarity: 5, role: 'mage' },
   { _id: 'noble-oath', name: 'Noble Oath', rarity: 5, role: 'knight' },
   {
@@ -267,14 +267,7 @@ export const en = [
     rarity: 4,
     role: '',
   },
-  {
-    _id: 'grade-1-seal-restraints',
-    name: 'To a New World',
-    rarity: 4,
-    role: '',
-  },
   { _id: 'hell-cutter', name: 'Hell Cutter', rarity: 4, role: 'warrior' },
-  { _id: 'hellfire-demonblade', name: 'XVI. The Tower', rarity: 4, role: '' },
   { _id: 'hilag-lance', name: 'Hilag Lance', rarity: 4, role: 'knight' },
   { _id: 'iela-violin', name: 'Iela Violin', rarity: 4, role: 'mage' },
   {
