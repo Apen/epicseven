@@ -7,23 +7,11 @@
         </div>
         <div class="col-md-6">
           <div class="custom-control custom-switch float-right">
-            <input
-              id="darkSwitch"
-              v-model="darkMode"
-              type="checkbox"
-              class="custom-control-input"
-            />
-            <label class="custom-control-label" for="darkSwitch">{{
-              $t('darkMode')
-            }}</label>
+            <input id="darkSwitch" v-model="darkMode" type="checkbox" class="custom-control-input" />
+            <label class="custom-control-label" for="darkSwitch">{{ $t('darkMode') }}</label>
           </div>
           <div class="locale-changer float-right mr-3">
-            <select
-              id="locale-changer"
-              v-model="$i18n.locale"
-              style="height: 26px"
-              @change="changeLang()"
-            >
+            <select id="locale-changer" v-model="$i18n.locale" style="height: 26px" @change="changeLang()">
               <option v-for="lang in langs" :value="lang.code" :key="lang.code">
                 {{ lang.name }}
               </option>
@@ -33,89 +21,33 @@
       </div>
       <hr />
       <div class="form-group">
-        <input
-          v-model="tower"
-          type="text"
-          class="form-control"
-          :placeholder="$t('tower')"
-        />
+        <input v-model="tower" type="text" class="form-control" :placeholder="$t('tower')" />
       </div>
       <div class="row">
         <div class="col-md-12">
           <div class="form-group">
             <nav class="nav nav-tabs">
-              <a
-                class="nav-item nav-link active"
-                href="#t1"
-                data-toggle="tab"
-                >{{ $t('t1') }}</a
-              >
-              <a class="nav-item nav-link" href="#t2" data-toggle="tab">{{
-                $t('t2')
-              }}</a>
-              <a class="nav-item nav-link" href="#result" data-toggle="tab">{{
-                $t('report')
-              }}</a>
+              <a class="nav-item nav-link active" href="#t1" data-toggle="tab">{{ $t('t1') }}</a>
+              <a class="nav-item nav-link" href="#t2" data-toggle="tab">{{ $t('t2') }}</a>
+              <a class="nav-item nav-link" href="#result" data-toggle="tab">{{ $t('report') }}</a>
             </nav>
           </div>
-          <div
-            class="toast-wrapper"
-            style="
-              position: absolute;
-              top: -14px;
-              right: 14px;
-              z-index: 1000;
-              height: 47px;
-            "
-          >
-            <div
-              id="resettoast"
-              class="toast"
-              data-delay="3000"
-              aria-atomic="true"
-            >
+          <div class="toast-wrapper" style="position: absolute; top: -14px; right: 14px; z-index: 1000; height: 47px">
+            <div id="resettoast" class="toast" data-delay="3000" aria-atomic="true">
               <div class="toast-body">
                 {{ $t('resetToast') }}
               </div>
             </div>
           </div>
-          <div
-            class="toast-wrapper"
-            style="
-              position: absolute;
-              top: -14px;
-              right: 14px;
-              z-index: 1000;
-              height: 47px;
-            "
-          >
-            <div
-              id="copytoast"
-              class="toast"
-              data-delay="3000"
-              aria-atomic="true"
-            >
+          <div class="toast-wrapper" style="position: absolute; top: -14px; right: 14px; z-index: 1000; height: 47px">
+            <div id="copytoast" class="toast" data-delay="3000" aria-atomic="true">
               <div class="toast-body">
                 {{ $t('copyToast') }}
               </div>
             </div>
           </div>
-          <div
-            class="toast-wrapper"
-            style="
-              position: absolute;
-              top: -14px;
-              right: 14px;
-              z-index: 1000;
-              height: 47px;
-            "
-          >
-            <div
-              id="slcopytoast"
-              class="toast"
-              data-delay="3000"
-              aria-atomic="true"
-            >
+          <div class="toast-wrapper" style="position: absolute; top: -14px; right: 14px; z-index: 1000; height: 47px">
+            <div id="slcopytoast" class="toast" data-delay="3000" aria-atomic="true">
               <div class="toast-body">
                 {{ $t('copyToast') }}
               </div>
@@ -187,12 +119,7 @@
           <div class="row">
             <div class="col-md-12">
               <div class="form-group">
-                <textarea
-                  id="report"
-                  v-model="report"
-                  class="form-control mt-3"
-                  style="height: 300px"
-                />
+                <textarea id="report" v-model="report" class="form-control mt-3" style="height: 300px" />
                 <textarea id="sl" style="opacity: 0" />
               </div>
             </div>
@@ -354,8 +281,7 @@ export default {
       this.toggleDarkMode(localStorage.getItem('darkMode'));
     }
     let langCode = navigator.language || navigator.userLanguage;
-    if (langCode === 'zh-TW' || langCode === 'zh-HK' || langCode === 'zh-MO')
-      langCode = 'tw';
+    if (langCode === 'zh-TW' || langCode === 'zh-HK' || langCode === 'zh-MO') langCode = 'tw';
     if (langCode === 'zh-CN' || langCode === 'zh-SG') langCode = 'cn';
     if (localStorage.getItem('langCode')) {
       langCode = localStorage.getItem('langCode');
@@ -429,36 +355,21 @@ export default {
         this.report += `${this.$t('t2')}\r\n${contentT2}`;
       }
     },
-    updateLine(
-      enemy,
-      baseSpeed,
-      crBonus = 0,
-      crPush = 0,
-      crPushAlly = 0,
-      speedDown
-    ) {
+    updateLine(enemy, baseSpeed, crBonus = 0, crPush = 0, crPushAlly = 0, speedDown) {
       let content = '';
       if (enemy.name) {
         content += enemy.name;
         content += enemy.artifact ? ` - ${enemy.artifact}` : '';
-        content += enemy.hp
-          ? ` - ${this.formatHp(parseInt(enemy.hp, 10))} ${this.$t('hp')}`
-          : '';
+        content += enemy.hp ? ` - ${this.formatHp(parseInt(enemy.hp, 10))} ${this.$t('hp')}` : '';
         if (enemy.cr && baseSpeed) {
-          let cr =
-            enemy.outspeed === true ? parseInt(enemy.cr, 10) + 100 : enemy.cr;
-          cr =
-            crPushAlly > 0 ? parseInt(cr, 10) + parseInt(crPushAlly, 10) : cr;
+          let cr = enemy.outspeed === true ? parseInt(enemy.cr, 10) + 100 : enemy.cr;
+          console.log(cr);
+          cr = crPushAlly > 0 ? parseInt(cr, 10) + parseInt(crPushAlly, 10) : cr;
           cr = crPush > 0 ? parseInt(cr, 10) - parseInt(crPush, 10) : cr;
-          cr =
-            crBonus > 0
-              ? (parseInt(cr, 10) * 100) / (parseInt(crBonus, 10) + 100)
-              : cr;
+          cr = crBonus > 0 ? (parseInt(cr, 10) * 100) / (parseInt(crBonus, 10) + 100) : cr;
+          console.log(cr);
           const speedmin = speedDown
-            ? Math.round(
-                (cr - 5) /
-                  (100 / baseSpeed + (cr - 5 - 100) / (baseSpeed * 0.7))
-              )
+            ? Math.round((cr - 5) / (100 / baseSpeed + (cr - 5 - 100) / (baseSpeed * 0.7)))
             : Math.round(((cr - 5) * baseSpeed) / 100);
           const speedmax = speedDown
             ? Math.round(cr / (95 / baseSpeed + (cr - 95) / (baseSpeed * 0.7)))
@@ -476,19 +387,16 @@ export default {
     formatHp(num) {
       if ($('#locale-changer :selected').val() === 'cn') {
         return Math.abs(num) > 9999
-          ? Math.sign(num) * (Math.abs(num) / 10000).toFixed(2) +
-              this.$t('formatHpK')
+          ? Math.sign(num) * (Math.abs(num) / 10000).toFixed(2) + this.$t('formatHpK')
           : Math.sign(num) * Math.abs(num);
       }
       if ($('#locale-changer :selected').val() === 'tw') {
         return Math.abs(num) > 9999
-          ? Math.sign(num) * (Math.abs(num) / 10000).toFixed(2) +
-              this.$t('formatHpK')
+          ? Math.sign(num) * (Math.abs(num) / 10000).toFixed(2) + this.$t('formatHpK')
           : Math.sign(num) * Math.abs(num);
       }
       return Math.abs(num) > 999
-        ? Math.sign(num) * (Math.abs(num) / 1000).toFixed(1) +
-            this.$t('formatHpK')
+        ? Math.sign(num) * (Math.abs(num) / 1000).toFixed(1) + this.$t('formatHpK')
         : Math.sign(num) * Math.abs(num);
     },
     copyToClipboard() {

@@ -8,12 +8,7 @@
       </div>
       <div class="col-md-3">
         <div class="input-group form-group">
-          <input
-            v-model="hero.speed"
-            type="number"
-            min="0"
-            class="form-control"
-          />
+          <input v-model="hero.speed" type="number" min="0" class="form-control" />
           <div class="input-group-append">
             <span class="input-group-text">{{ $t('speed') }}</span>
           </div>
@@ -22,12 +17,7 @@
       </div>
       <div class="col-md-3">
         <div class="input-group form-group">
-          <input
-            v-model="hero.crBonus"
-            type="number"
-            min="0"
-            class="form-control"
-          />
+          <input v-model="hero.crBonus" type="number" min="0" class="form-control" />
           <div class="input-group-append">
             <span class="input-group-text">{{ $t('crBonus') }}</span>
           </div>
@@ -36,12 +26,7 @@
       </div>
       <div class="col-md-3">
         <div class="input-group form-group">
-          <input
-            v-model="hero.crPush"
-            type="number"
-            min="0"
-            class="form-control"
-          />
+          <input v-model="hero.crPush" type="number" min="0" class="form-control" />
           <div class="input-group-append">
             <span class="input-group-text">{{ $t('crPush') }}</span>
           </div>
@@ -53,12 +38,7 @@
       <div class="col-md-3" />
       <div class="col-md-4">
         <div class="input-group form-group">
-          <input
-            v-model="hero.crPushAlly"
-            type="number"
-            min="0"
-            class="form-control"
-          />
+          <input v-model="hero.crPushAlly" type="number" min="0" class="form-control" />
           <div class="input-group-append">
             <span class="input-group-text">{{ $t('crPushAlly') }}</span>
           </div>

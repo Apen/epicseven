@@ -32,6 +32,5 @@ export const fr = {
   crPush: '% CR augmentée',
   crPushDesc: 'Exemple : 25 si rose joue avant vous',
   crPushAlly: '% CR augmentée pour vos alliés',
-  crPushAllyDesc:
-    'Exemple : 15 si votre général purrgis est attaqué par des ennemis',
+  crPushAllyDesc: 'Exemple : 15 si votre général purrgis est attaqué par des ennemis',
 };

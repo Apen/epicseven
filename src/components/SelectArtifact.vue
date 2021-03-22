@@ -1,17 +1,6 @@
 <template>
-  <select
-    :value="value"
-    class="selectpicker"
-    :title="title"
-    data-live-search="true"
-    data-width="100%"
-    @change="select"
-  >
-    <option
-      v-for="item in artifacts"
-      :key="item._id"
-      :data-tokens="getTokens(item)"
-    >
+  <select :value="value" class="selectpicker" :title="title" data-live-search="true" data-width="100%" @change="select">
+    <option v-for="item in artifacts" :key="item._id" :data-tokens="getTokens(item)">
       {{ item.name }}
     </option>
   </select>

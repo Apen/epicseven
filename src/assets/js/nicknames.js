@@ -71,8 +71,7 @@ nicknames['guider-aither'] = '光王子';
 nicknames.gunther = '昆特大爷 坤哥';
 nicknames.haste = '火正太';
 nicknames.helga = '三星小木斧';
-nicknames['holiday-yufine'] =
-  '烧烤龙 喷火龙 火龙妹 包子龙 燒烤龍 噴火龍 火龍妹 包子龍';
+nicknames['holiday-yufine'] = '烧烤龙 喷火龙 火龙妹 包子龙 燒烤龍 噴火龍 火龍妹 包子龍';
 nicknames.hurado = '光头 三星暗法 光頭';
 nicknames.iseria = '木飞剑 木飛劍';
 nicknames.jecht = '木狗奶';
@@ -135,12 +134,10 @@ nicknames.sez = '水刺';
 nicknames['shadow-rose'] = '暗萝季 暗罗季 暗蘿季 暗羅季';
 nicknames.sigret = '旧水镰 眼镜姐 舊水鐮 眼鏡姐';
 nicknames.silk = '木席可';
-nicknames['silver-blade-aramintha'] =
-  'ml.aramintha mlaramintha 光响指 光法 光響指';
+nicknames['silver-blade-aramintha'] = 'ml.aramintha mlaramintha 光响指 光法 光響指';
 nicknames['sinful-angelica'] = 'ml.angelica mlangelica 暗水奶 暗奶';
 nicknames['specimen-sez'] = 'ml.sez mlsez 光刺 光弟弟';
-nicknames['specter-tenebria'] =
-  's.tene stene ml.tenebria mltenebria 暗法 暗泰妮';
+nicknames['specter-tenebria'] = 's.tene stene ml.tenebria mltenebria 暗法 暗泰妮';
 nicknames.surin = '苏林 蘇林';
 nicknames.sven = '屎兵';
 nicknames.tamarinne = '偶像';

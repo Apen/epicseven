@@ -7,13 +7,7 @@ module.exports = {
   parserOptions: {
     parser: 'babel-eslint',
   },
-  extends: [
-    'plugin:vue/base',
-    'airbnb-base',
-    'prettier',
-    'prettier/vue',
-    'plugin:prettier/recommended',
-  ],
+  extends: ['plugin:vue/base', 'airbnb-base', 'prettier', 'prettier/vue', 'plugin:prettier/recommended'],
   plugins: ['prettier'],
   // add your custom rules here
   rules: {

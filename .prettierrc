@@ -1,5 +1,6 @@
 {
   "singleQuote": true,
   "endOfLine": "auto",
-  "javascript.format.insertSpaceBeforeFunctionParenthesis": false
+  "javascript.format.insertSpaceBeforeFunctionParenthesis": false,
+  "printWidth": 120
 }
