@@ -1,10 +1,14 @@
+nav span.h1 {
+
+}
+
 .dark {
-    background-color: #222 !important;
+    background-color: #343a40 !important;
     color: #eee;
 }
 
 .dark .bg-light {
-    background-color: #333 !important;
+    background-color: rgb(33, 37, 41) !important;
 }
 
 .dark .bg-white {
@@ -16,5 +20,9 @@
 }
 
 .dark hr {
-    border-color: #eee !important;
+    border-color: #dee2e6 !important;
+}
+
+.dark nav span.h1 {
+    color: #eee;
 }

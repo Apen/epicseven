@@ -1,25 +1,7 @@
 <template>
   <div>
+    <Navbar />
     <div class="container" style="margin-top: 10px">
-      <div class="row">
-        <div class="col-md-6">
-          <h1>{{ $t('title') }}</h1>
-        </div>
-        <div class="col-md-6">
-          <div class="custom-control custom-switch float-right">
-            <input id="darkSwitch" v-model="darkMode" type="checkbox" class="custom-control-input" />
-            <label class="custom-control-label" for="darkSwitch">{{ $t('darkMode') }}</label>
-          </div>
-          <div class="locale-changer float-right mr-3">
-            <select id="locale-changer" v-model="$i18n.locale" style="height: 26px" @change="changeLang()">
-              <option v-for="lang in langs" :value="lang.code" :key="lang.code">
-                {{ lang.name }}
-              </option>
-            </select>
-          </div>
-        </div>
-      </div>
-      <hr />
       <div class="form-group">
         <input v-model="tower" type="text" class="form-control" :placeholder="$t('tower')" />
       </div>
@@ -136,6 +118,7 @@ import Vue from 'vue';
 import VueI18n from 'vue-i18n';
 import ComponentMyHero from './components/MyHero.vue';
 import ComponentEnemy from './components/Enemy.vue';
+import ComponentNavbar from './components/Navbar.vue';
 import { en } from './lang/en';
 import { fr } from './lang/fr';
 import { cn } from './lang/cn';
@@ -164,15 +147,10 @@ export default {
   components: {
     MyHero: ComponentMyHero,
     Enemy: ComponentEnemy,
+    Navbar: ComponentNavbar,
   },
   data() {
     return {
-      langs: [
-        { code: 'en', name: 'English' },
-        { code: 'fr', name: 'Français' },
-        { code: 'cn', name: '简体中文' },
-        { code: 'tw', name: '繁體中文' },
-      ],
       firstHero: {
         name: '',
         speed: '',
@@ -201,7 +179,6 @@ export default {
       },
       tower: '',
       report: '',
-      darkMode: false,
     };
   },
   watch: {
@@ -268,18 +245,12 @@ export default {
         this.updateReport();
       },
     },
-    darkMode(val) {
-      this.toggleDarkMode(val);
-    },
   },
   updated() {
     $('.selectpicker').selectpicker('refresh');
     $('[data-toggle="tooltip"]').tooltip('_fixTitle');
   },
   mounted() {
-    if (localStorage.getItem('darkMode')) {
-      this.toggleDarkMode(localStorage.getItem('darkMode'));
-    }
     let langCode = navigator.language || navigator.userLanguage;
     if (langCode === 'zh-TW' || langCode === 'zh-HK' || langCode === 'zh-MO') langCode = 'tw';
     if (langCode === 'zh-CN' || langCode === 'zh-SG') langCode = 'cn';
@@ -428,20 +399,6 @@ export default {
       document.location.reload(true);
       $('.toast').toast('hide');
       $('#resettoast').toast('show');
-    },
-    toggleDarkMode(val) {
-      if (val === true || val === 'true') {
-        document.body.classList.add('dark');
-        this.darkMode = true;
-      } else {
-        document.body.classList.remove('dark');
-        this.darkMode = false;
-      }
-      localStorage.setItem('darkMode', val);
-    },
-    changeLang() {
-      localStorage.setItem('langCode', this.$i18n.locale);
-      document.title = this.$t('title');
     },
   },
 };
