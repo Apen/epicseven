@@ -362,18 +362,22 @@ export default {
         content += enemy.artifact ? ` - ${enemy.artifact}` : '';
         content += enemy.hp ? ` - ${this.formatHp(parseInt(enemy.hp, 10))} ${this.$t('hp')}` : '';
         if (enemy.cr && baseSpeed) {
-          let cr = enemy.outspeed === true ? parseInt(enemy.cr, 10) + 100 : enemy.cr;
-          console.log(cr);
+          let cr = parseInt(enemy.cr, 10);
           cr = crPushAlly > 0 ? parseInt(cr, 10) + parseInt(crPushAlly, 10) : cr;
           cr = crPush > 0 ? parseInt(cr, 10) - parseInt(crPush, 10) : cr;
           cr = crBonus > 0 ? (parseInt(cr, 10) * 100) / (parseInt(crBonus, 10) + 100) : cr;
-          console.log(cr);
-          const speedmin = speedDown
-            ? Math.round((cr - 5) / (100 / baseSpeed + (cr - 5 - 100) / (baseSpeed * 0.7)))
-            : Math.round(((cr - 5) * baseSpeed) / 100);
-          const speedmax = speedDown
-            ? Math.round(cr / (95 / baseSpeed + (cr - 95) / (baseSpeed * 0.7)))
-            : Math.round((cr * baseSpeed) / 95);
+          let crMin = (parseInt(cr, 10) - 5) / 100;
+          let crMax = (parseInt(cr, 10) + 5) / 100;
+          if (enemy.outspeed === true) {
+            if (speedDown) {
+              crMin = parseFloat(crMin) * 0.7;
+              crMax = parseFloat(crMax) * 0.7;
+            }
+            crMin = parseFloat(crMin) + 1;
+            crMax = parseFloat(crMax) + 1;
+          }
+          const speedmin = Math.round(crMin * baseSpeed);
+          const speedmax = Math.round(crMax * baseSpeed);
           const speedRange = `${Math.round(speedmin)}-${Math.round(speedmax)}`;
           content += ` - ${speedRange} ${this.$t('speed')}`;
         }
