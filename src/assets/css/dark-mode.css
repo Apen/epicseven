@@ -1,7 +1,3 @@
-nav span.h1 {
-
-}
-
 .dark {
     background-color: #343a40 !important;
     color: #eee;
@@ -25,4 +21,13 @@ nav span.h1 {
 
 .dark nav span.h1 {
     color: #eee;
+}
+
+.dark .toast-body {
+    background-color: rgb(33, 37, 41) !important;
+}
+
+.dark .btn {
+    background-color: #e9ecef !important;
+    color: #495057;
 }
