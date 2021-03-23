@@ -3,6 +3,9 @@
     <div class="container">
       <span class="navbar-brand mb-0 h1">{{ $t('title') }}</span>
       <div class="col-md-6">
+        <div class="custom-control float-right">
+          <a href="https://www.buymeacoffee.com/apencoffee" target="_blank">Buy me a coffee</a>
+        </div>
         <div class="custom-control custom-switch float-right">
           <input id="darkSwitch" v-model="darkMode" type="checkbox" class="custom-control-input" />
           <label class="custom-control-label" for="darkSwitch">{{ $t('darkMode') }}</label>
