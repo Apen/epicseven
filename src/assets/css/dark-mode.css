@@ -3,6 +3,10 @@
     color: #eee;
 }
 
+.dark .navbar-brand {
+    color: #eee !important;
+}
+
 .dark .bg-light {
     background-color: rgb(33, 37, 41) !important;
 }

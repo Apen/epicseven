@@ -1,17 +1,17 @@
 <template>
   <nav class="navbar navbar-light bg-light">
     <div class="container">
-      <span class="navbar-brand mb-0 h1">{{ $t('title') }}</span>
+      <a class="navbar-brand" href="#">{{ $t('title') }}</a>
       <div class="col-md-6">
         <div class="custom-control float-right">
           <a href="https://www.buymeacoffee.com/apencoffee" target="_blank">Buy me a coffee</a>
         </div>
         <div class="custom-control custom-switch float-right">
-          <input id="darkSwitch" v-model="darkMode" type="checkbox" class="custom-control-input" />
+          <input id="darkSwitch" v-model="darkMode" type="checkbox" class="form-control custom-control-input" />
           <label class="custom-control-label" for="darkSwitch">{{ $t('darkMode') }}</label>
         </div>
-        <div class="locale-changer float-right mr-3">
-          <select id="locale-changer" v-model="$i18n.locale" style="height: 26px" @change="changeLang()">
+        <div class="custom-control float-right mr-3">
+          <select id="locale-changer" v-model="$i18n.locale" class="form-control" @change="changeLang()">
             <option v-for="lang in langs" :value="lang.code" :key="lang.code">
               {{ lang.name }}
             </option>
