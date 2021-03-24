@@ -1,6 +1,6 @@
 <template>
-  <div class="container">
-    <div class="row">
+  <div class="">
+    <div class="form-row">
       <div class="col-md-3">
         <div class="form-group">
           <SelectCharacter v-model="hero.name" :title="$t('firstHero')" />
@@ -46,10 +46,12 @@
         </div>
       </div>
       <div class="col-md-3">
-        <label class="mt-md-2">
-          <input v-model="hero.speedDown" type="checkbox" />
-          <img src="assets/images/Speed_down.png" />
-        </label>
+        <div class="form-group">
+          <label class="mr-2">
+            <input v-model="hero.speedDown" type="checkbox" class="form-check-input" />
+            <img src="assets/images/Speed_down.png" />
+          </label>
+        </div>
       </div>
     </div>
   </div>

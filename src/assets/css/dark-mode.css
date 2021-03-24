@@ -1,37 +1,46 @@
 .dark {
-    background-color: #343a40 !important;
-    color: #eee;
+  background-color: #343a40 !important;
+  color: #eee !important;
 }
 
 .dark .navbar-brand {
-    color: #eee !important;
+  color: #eee !important;
 }
 
 .dark .bg-light {
-    background-color: rgb(33, 37, 41) !important;
-}
-
-.dark .bg-white {
-    background-color: #000 !important;
-}
-
-.dark .bg-black {
-    background-color: #eee !important;
+  background-color: rgb(33, 37, 41) !important;
+  color: #eee !important;
 }
 
 .dark hr {
-    border-color: #dee2e6 !important;
+  border-color: #dee2e6 !important;
 }
 
 .dark nav span.h1 {
-    color: #eee;
+  color: #eee;
 }
 
 .dark .toast-body {
-    background-color: rgb(33, 37, 41) !important;
+  background-color: rgb(33, 37, 41) !important;
 }
 
+.dark .form-control,
+.dark .dropdown-toggle,
 .dark .btn {
-    background-color: #e9ecef !important;
-    color: #495057;
+  background-color: #343a40 !important;
+  color: #eee !important;
+  border-color: #eee !important;
+}
+
+.dark .input-group-text {
+  background-color: rgb(33, 37, 41) !important;
+  color: #eee !important;
+}
+
+.dark .nav-tabs a {
+    color: #eee !important;
+}
+.dark .nav-tabs .active {
+  background-color: rgb(33, 37, 41) !important;
+  color: #eee !important;
 }
