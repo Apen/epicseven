@@ -47,8 +47,8 @@
       </div>
       <div class="col-md-3">
         <div class="form-group">
-          <label class="mr-2">
-            <input v-model="hero.speedDown" type="checkbox" class="form-check-input" />
+          <label>
+            <input v-model="hero.speedDown" type="checkbox" class="mr-2" />
             <img src="assets/images/Speed_down.png" />
           </label>
         </div>
