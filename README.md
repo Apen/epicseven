@@ -1,10 +1,10 @@
-# Epic Seven Helpers
+# Epic Seven - Guild war reporting
 
 ## Introduction
 
 This tool help you to report the enemy defense during guid wars in epic seven mobile game.
 
-![screenshot of epic seven helper](https://github.com/Apen/epicseven/raw/master/public/assets/images/screen-1.png)
+![screenshot](https://github.com/Apen/epicseven/raw/master/public/assets/images/screen-1.png)
 
 ## Example of generated report 
 
@@ -19,6 +19,7 @@ Alencia - 22k HP - 184-194 Speed - Immunity set
 Cecilia - 25k HP - 171-180 Speed - Immunity set
 Apocalypse Ravi - 20k HP - 160-168 Speed
 ```
+Just copy/paste it in your discord channel.
 
 ## Project setup
 
