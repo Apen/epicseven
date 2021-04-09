@@ -7,6 +7,7 @@ export const en = {
   report: 'Report',
   firstHero: 'Your first hero',
   speed: 'Speed',
+  speedimprint: 'Speed imprint',
   hp: 'HP',
   cr: '% CR',
   outspeed: 'Outspeed?',

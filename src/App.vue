@@ -154,6 +154,7 @@ export default {
       firstHero: {
         name: '',
         speed: '',
+        speedimprint: '',
         crBonus: '',
         crPush: '',
         crPushAlly: '',
@@ -162,6 +163,7 @@ export default {
       secondHero: {
         name: '',
         speed: '',
+        speedimprint: '',
         crBonus: '',
         crPush: '',
         crPushAlly: '',
@@ -196,6 +198,9 @@ export default {
         this.secondHero.speed = '';
       }
     },
+    'firstHero.speedimprint': function () {
+      this.updateReport();
+    },
     'firstHero.crBonus': function () {
       this.updateReport();
     },
@@ -217,6 +222,9 @@ export default {
       if (this.secondHero.name && val) {
         localStorage.setItem(this.secondHero.name, val);
       }
+    },
+    'secondHero.speedimprint': function () {
+      this.updateReport();
     },
     'secondHero.crBonus': function () {
       this.updateReport();
@@ -273,6 +281,7 @@ export default {
       contentT1 += this.updateLine(
         this.enemiesFirstHero.first,
         this.firstHero.speed,
+        this.firstHero.speedimprint,
         this.firstHero.crBonus,
         this.firstHero.crPush,
         this.firstHero.crPushAlly,
@@ -281,6 +290,7 @@ export default {
       contentT1 += this.updateLine(
         this.enemiesFirstHero.second,
         this.firstHero.speed,
+        this.firstHero.speedimprint,
         this.firstHero.crBonus,
         this.firstHero.crPush,
         this.firstHero.crPushAlly,
@@ -289,6 +299,7 @@ export default {
       contentT1 += this.updateLine(
         this.enemiesFirstHero.third,
         this.firstHero.speed,
+        this.firstHero.speedimprint,
         this.firstHero.crBonus,
         this.firstHero.crPush,
         this.firstHero.crPushAlly,
@@ -301,6 +312,7 @@ export default {
       contentT2 += this.updateLine(
         this.enemiesSecondHero.first,
         this.secondHero.speed,
+        this.secondHero.speedimprint,
         this.secondHero.crBonus,
         this.secondHero.crPush,
         this.secondHero.crPushAlly,
@@ -309,6 +321,7 @@ export default {
       contentT2 += this.updateLine(
         this.enemiesSecondHero.second,
         this.secondHero.speed,
+        this.secondHero.speedimprint,
         this.secondHero.crBonus,
         this.secondHero.crPush,
         this.secondHero.crPushAlly,
@@ -317,6 +330,7 @@ export default {
       contentT2 += this.updateLine(
         this.enemiesSecondHero.third,
         this.secondHero.speed,
+        this.secondHero.speedimprint,
         this.secondHero.crBonus,
         this.secondHero.crPush,
         this.secondHero.crPushAlly,
@@ -326,8 +340,11 @@ export default {
         this.report += `${this.$t('t2')}\r\n${contentT2}`;
       }
     },
-    updateLine(enemy, baseSpeed, crBonus = 0, crPush = 0, crPushAlly = 0, speedDown) {
+    updateLine(enemy, baseSpeed, speedimprint = 0, crBonus = 0, crPush = 0, crPushAlly = 0, speedDown = '') {
       let content = '';
+      if (speedimprint) {
+        baseSpeed = parseInt(baseSpeed, 10) + parseInt(speedimprint, 10);
+      }
       if (enemy.name) {
         content += enemy.name;
         content += enemy.artifact ? ` - ${enemy.artifact}` : '';

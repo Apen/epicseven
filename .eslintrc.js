@@ -17,23 +17,6 @@ module.exports = {
     'import/prefer-default-export': 'off',
     'func-names': 'off',
     'no-shadow': ['error', { allow: ['state'] }],
-    'no-param-reassign': [
-      'error',
-      {
-        props: true,
-        ignorePropertyModificationsFor: [
-          // All properties except state are in the ignorePropertyModificationsFor array by default.
-          'state',
-          'acc',
-          'e',
-          'ctx',
-          'req',
-          'request',
-          'res',
-          'response',
-          '$scope',
-        ],
-      },
-    ],
+    'no-param-reassign': 'off'
   },
 };

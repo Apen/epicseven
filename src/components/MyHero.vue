@@ -17,6 +17,25 @@
       </div>
       <div class="col-md-3">
         <div class="input-group form-group">
+          <input v-model="hero.speedimprint" type="number" min="0" class="form-control" />
+          <div class="input-group-append">
+            <span class="input-group-text">{{ $t('speedimprint') }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="form-group">
+          <label>
+            <input v-model="hero.speedDown" type="checkbox" class="mr-2" />
+            <img src="assets/images/Speed_down.png" />
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col-md-3" />
+      <div class="col-md-3">
+        <div class="input-group form-group">
           <input v-model="hero.crBonus" type="number" min="0" class="form-control" />
           <div class="input-group-append">
             <span class="input-group-text">{{ $t('crBonus') }}</span>
@@ -33,24 +52,13 @@
           <br /><small class="text-muted"> {{ $t('crPushDesc') }}</small>
         </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-md-3" />
-      <div class="col-md-4">
+      <div class="col-md-3">
         <div class="input-group form-group">
           <input v-model="hero.crPushAlly" type="number" min="0" class="form-control" />
           <div class="input-group-append">
             <span class="input-group-text">{{ $t('crPushAlly') }}</span>
           </div>
           <br /><small class="text-muted"> {{ $t('crPushAllyDesc') }}</small>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="form-group">
-          <label>
-            <input v-model="hero.speedDown" type="checkbox" class="mr-2" />
-            <img src="assets/images/Speed_down.png" />
-          </label>
         </div>
       </div>
     </div>
