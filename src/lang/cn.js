@@ -7,6 +7,7 @@ export const cn = {
   report: '生成报告',
   firstHero: '你的一速英雄',
   speed: '速度',
+  speedimprint: '速度阵',
   hp: '生命',
   cr: '% 速攻值',
   outspeed: '被对方超车?',

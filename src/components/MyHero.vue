@@ -6,7 +6,7 @@
           <SelectCharacter v-model="hero.name" :title="$t('firstHero')" />
         </div>
       </div>
-      <div class="col-md-3">
+      <div class="col-md-4">
         <div class="input-group form-group">
           <input v-model="hero.speed" type="number" min="0" class="form-control" />
           <div class="input-group-append">
@@ -23,7 +23,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-3">
+      <div class="col-md-2">
         <div class="form-group">
           <label>
             <input v-model="hero.speedDown" type="checkbox" class="mr-2" />

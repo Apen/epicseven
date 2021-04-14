@@ -7,6 +7,7 @@ export const tw = {
   report: '生成報告',
   firstHero: '你的一速英雄',
   speed: '速度',
+  speedimprint: '速度陣',
   hp: '生命',
   cr: '% 速攻值',
   outspeed: '被對方超車?',
