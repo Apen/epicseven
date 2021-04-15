@@ -15,7 +15,7 @@ export const cn = {
   setCounter: '反击套',
   setImmunity: '免疫套',
   extraInfos: '备注...',
-  heroesSaved: '你输入的英雄速度会保存在本地',
+  heroesSaved: '你输入的英雄以及速度会保存在本地',
   copyText: '复制到剪贴板',
   copyTextSL: '复制到剪贴板(单行)',
   reset: '数据重置',

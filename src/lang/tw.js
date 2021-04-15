@@ -15,7 +15,7 @@ export const tw = {
   extraInfos: '備註...',
   setCounter: '反擊套',
   setImmunity: '免疫套',
-  heroesSaved: '你輸入的英雄速度會保存在本地',
+  heroesSaved: '你輸入的英雄以及速度會保存在本地',
   copyText: '複製到剪貼簿',
   copyTextSL: '複製到剪貼簿(單行)',
   reset: '數據重置',

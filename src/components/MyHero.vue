@@ -6,11 +6,13 @@
           <SelectCharacter v-model="hero.name" :title="$t('firstHero')" />
         </div>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-3">
         <div class="input-group form-group">
           <input v-model="hero.speed" type="number" min="0" class="form-control" />
+          <br />
           <div class="input-group-append">
             <span class="input-group-text">{{ $t('speed') }}</span>
+            <br />
           </div>
           <br /><small class="text-muted"> {{ $t('heroesSaved') }}</small>
         </div>
@@ -23,7 +25,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-2">
+      <div class="col-md-3">
         <div class="form-group">
           <label>
             <input v-model="hero.speedDown" type="checkbox" class="mr-2" />
