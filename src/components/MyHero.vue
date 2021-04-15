@@ -9,10 +9,8 @@
       <div class="col-md-3">
         <div class="input-group form-group">
           <input v-model="hero.speed" type="number" min="0" class="form-control" />
-          <br />
           <div class="input-group-append">
             <span class="input-group-text">{{ $t('speed') }}</span>
-            <br />
           </div>
           <br /><small class="text-muted"> {{ $t('heroesSaved') }}</small>
         </div>
