@@ -11,24 +11,32 @@
   "dependencies": {
     "bootstrap": "^4.6",
     "bootstrap-select": "^1.13.18",
-    "core-js": "^3.8.3",
+    "core-js": "^3.11.0",
     "jquery": "^3.5.1",
     "popper.js": "^1.16.1",
     "vue": "^2.6.12",
-    "vue-i18n": "^8.22.4"
+    "vue-i18n": "^8.24.3"
   },
   "devDependencies": {
+    "@types/bootstrap": "^5.0.12",
+    "@types/bootstrap-select": "^1.13.1",
+    "@types/jquery": "^3.5.5",
+    "@types/vue": "^2.0.0",
+    "@typescript-eslint/eslint-plugin": "^2.33.0",
+    "@typescript-eslint/parser": "^2.33.0",
     "@vue/cli-plugin-babel": "~4.4.0",
     "@vue/cli-plugin-eslint": "~4.4.0",
+    "@vue/cli-plugin-typescript": "^4.5.12",
     "@vue/cli-service": "~4.4.0",
-    "babel-eslint": "^10.1.0",
-    "eslint": "^7.6.0",
+    "@vue/eslint-config-typescript": "^7.0.0",
+    "eslint": "^7.25.0",
     "eslint-config-airbnb": "^18.2.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-import": "^2.22.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "prettier": "^2.0.5",
+    "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-vue": "^6.2.2",
+    "prettier": "^2.0.5",
+    "typescript": "^4.2.4",
     "vue-template-compiler": "^2.6.12"
   },
   "eslintConfig": {
@@ -38,10 +46,11 @@
     },
     "extends": [
       "plugin:vue/essential",
-      "eslint:recommended"
+      "eslint:recommended",
+      "@vue/typescript"
     ],
     "parserOptions": {
-      "parser": "babel-eslint"
+      "parser": "@typescript-eslint/parser"
     },
     "rules": {}
   },

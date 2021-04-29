@@ -112,12 +112,12 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import $ from 'jquery';
 import Vue from 'vue';
 import VueI18n from 'vue-i18n';
-import ComponentMyHero from './components/MyHero.vue';
-import ComponentEnemy from './components/Enemy.vue';
+import ComponentMyHero, { Hero } from './components/MyHero.vue';
+import ComponentEnemy, { Enemy } from './components/Enemy.vue';
 import ComponentNavbar from './components/Navbar.vue';
 import { en } from './lang/en';
 import { fr } from './lang/fr';
@@ -142,7 +142,7 @@ require('./assets/css/dark-mode.css');
 require('../node_modules/bootstrap-select/dist/css/bootstrap-select.min.css');
 require('../node_modules/bootstrap-select/dist/js/bootstrap-select.min');
 
-export default {
+export default Vue.extend({
   i18n,
   components: {
     MyHero: ComponentMyHero,
@@ -151,128 +151,105 @@ export default {
   },
   data() {
     return {
-      firstHero: {
-        name: '',
-        speed: '',
-        speedimprint: '',
-        crBonus: '',
-        crPush: '',
-        crPushAlly: '',
-        speedDown: '',
-      },
-      secondHero: {
-        name: '',
-        speed: '',
-        speedimprint: '',
-        crBonus: '',
-        crPush: '',
-        crPushAlly: '',
-        speedDown: '',
-      },
+      firstHero: {} as Hero,
+      secondHero: {} as Hero,
       enemiesFirstHero: {
-        first: {},
-        second: {},
-        third: {},
+        first: {} as Enemy,
+        second: {} as Enemy,
+        third: {} as Enemy,
       },
       enemiesSecondHero: {
-        first: {},
-        second: {},
-        third: {},
+        first: {} as Enemy,
+        second: {} as Enemy,
+        third: {} as Enemy,
       },
       tower: '',
       report: '',
     };
   },
   watch: {
-    'firstHero.name': function (val) {
+    'firstHero.name': function (val): void {
       if (val && localStorage.getItem(val)) {
-        this.firstHero.speed = localStorage.getItem(val);
+        this.firstHero.speed = parseInt(localStorage.getItem(val) as string, 10);
       } else {
-        this.firstHero.speed = '';
+        this.firstHero.speed = 0;
       }
     },
-    'secondHero.name': function (val) {
+    'secondHero.name': function (val): void {
       if (val && localStorage.getItem(val)) {
-        this.secondHero.speed = localStorage.getItem(val);
+        this.secondHero.speed = parseInt(localStorage.getItem(val) as string, 10);
       } else {
-        this.secondHero.speed = '';
+        this.secondHero.speed = 0;
       }
     },
-    'firstHero.speedimprint': function () {
+    'firstHero.crBonus': function (): void {
       this.updateReport();
     },
-    'firstHero.crBonus': function () {
+    'firstHero.crPush': function (): void {
       this.updateReport();
     },
-    'firstHero.crPush': function () {
+    'firstHero.crPushAlly': function (): void {
       this.updateReport();
     },
-    'firstHero.crPushAlly': function () {
+    'firstHero.speedDown': function (): void {
       this.updateReport();
     },
-    'firstHero.speedDown': function () {
-      this.updateReport();
-    },
-    'firstHero.speed': function (val) {
+    'firstHero.speed': function (val): void {
       if (this.firstHero.name && val) {
         localStorage.setItem(this.firstHero.name, val);
       }
     },
-    'secondHero.speed': function (val) {
+    'secondHero.speed': function (val): void {
       if (this.secondHero.name && val) {
         localStorage.setItem(this.secondHero.name, val);
       }
     },
-    'secondHero.speedimprint': function () {
+    'secondHero.crBonus': function (): void {
       this.updateReport();
     },
-    'secondHero.crBonus': function () {
+    'secondHero.crPush': function (): void {
       this.updateReport();
     },
-    'secondHero.crPush': function () {
+    'secondHero.crPushAlly': function (): void {
       this.updateReport();
     },
-    'secondHero.crPushAlly': function () {
+    'secondHero.speedDown': function (): void {
       this.updateReport();
     },
-    'secondHero.speedDown': function () {
-      this.updateReport();
-    },
-    tower() {
+    tower(): void {
       this.updateReport();
     },
     enemiesFirstHero: {
       deep: true,
-      handler() {
+      handler(): void {
         this.updateReport();
       },
     },
     enemiesSecondHero: {
       deep: true,
-      handler() {
+      handler(): void {
         this.updateReport();
       },
     },
   },
   updated() {
     $('.selectpicker').selectpicker('refresh');
-    $('[data-toggle="tooltip"]').tooltip('_fixTitle');
+    // $('[data-toggle="tooltip"]').tooltip('_fixTitle');
   },
   mounted() {
-    let langCode = navigator.language || navigator.userLanguage;
+    /* eslint-disable  dot-notation */
+    let langCode = navigator.language || window.navigator['userLanguage'];
     if (langCode === 'zh-TW' || langCode === 'zh-HK' || langCode === 'zh-MO') langCode = 'tw';
     if (langCode === 'zh-CN' || langCode === 'zh-SG') langCode = 'cn';
     if (localStorage.getItem('langCode')) {
       langCode = localStorage.getItem('langCode');
     }
     i18n.locale = langCode;
-    document.title = this.$t('title');
-    $('[data-toggle="tooltip"]').tooltip({
-      trigger: 'hover',
-    });
+    document.title = this.$t('title') as string;
+    $('[data-toggle="tooltip"]').tooltip({ trigger: 'hover' });
   },
   methods: {
-    updateReport() {
+    updateReport(): void {
       this.report = '';
       if (this.tower) {
         this.report += `** ${this.tower} **\r\n`;
@@ -281,7 +258,6 @@ export default {
       contentT1 += this.updateLine(
         this.enemiesFirstHero.first,
         this.firstHero.speed,
-        this.firstHero.speedimprint,
         this.firstHero.crBonus,
         this.firstHero.crPush,
         this.firstHero.crPushAlly,
@@ -290,7 +266,6 @@ export default {
       contentT1 += this.updateLine(
         this.enemiesFirstHero.second,
         this.firstHero.speed,
-        this.firstHero.speedimprint,
         this.firstHero.crBonus,
         this.firstHero.crPush,
         this.firstHero.crPushAlly,
@@ -299,7 +274,6 @@ export default {
       contentT1 += this.updateLine(
         this.enemiesFirstHero.third,
         this.firstHero.speed,
-        this.firstHero.speedimprint,
         this.firstHero.crBonus,
         this.firstHero.crPush,
         this.firstHero.crPushAlly,
@@ -312,7 +286,6 @@ export default {
       contentT2 += this.updateLine(
         this.enemiesSecondHero.first,
         this.secondHero.speed,
-        this.secondHero.speedimprint,
         this.secondHero.crBonus,
         this.secondHero.crPush,
         this.secondHero.crPushAlly,
@@ -321,7 +294,6 @@ export default {
       contentT2 += this.updateLine(
         this.enemiesSecondHero.second,
         this.secondHero.speed,
-        this.secondHero.speedimprint,
         this.secondHero.crBonus,
         this.secondHero.crPush,
         this.secondHero.crPushAlly,
@@ -330,7 +302,6 @@ export default {
       contentT2 += this.updateLine(
         this.enemiesSecondHero.third,
         this.secondHero.speed,
-        this.secondHero.speedimprint,
         this.secondHero.crBonus,
         this.secondHero.crPush,
         this.secondHero.crPushAlly,
@@ -340,33 +311,32 @@ export default {
         this.report += `${this.$t('t2')}\r\n${contentT2}`;
       }
     },
-    updateLine(enemy, baseSpeed, speedimprint = 0, crBonus = 0, crPush = 0, crPushAlly = 0, speedDown = '') {
+    updateLine(enemy: Enemy, baseSpeed: number, crBonus = 0, crPush = 0, crPushAlly = 0, speedDown = false): string {
       let content = '';
-      if (speedimprint) {
-        baseSpeed = parseInt(baseSpeed, 10) + parseInt(speedimprint, 10);
-      }
       if (enemy.name) {
         content += enemy.name;
         content += enemy.artifact ? ` - ${enemy.artifact}` : '';
-        content += enemy.hp ? ` - ${this.formatHp(parseInt(enemy.hp, 10))} ${this.$t('hp')}` : '';
+        content += enemy.hp ? ` - ${this.formatHp(enemy.hp)} ${this.$t('hp')}` : '';
         if (enemy.cr && baseSpeed) {
-          let cr = parseInt(enemy.cr, 10);
-          cr = crPushAlly > 0 ? parseInt(cr, 10) + parseInt(crPushAlly, 10) : cr;
-          cr = crPush > 0 ? parseInt(cr, 10) - parseInt(crPush, 10) : cr;
-          cr = crBonus > 0 ? (parseInt(cr, 10) * 100) / (parseInt(crBonus, 10) + 100) : cr;
-          let crMin = (parseInt(cr, 10) - 5) / 100;
-          let crMax = (parseInt(cr, 10) + 5) / 100;
-          if (enemy.outspeed === true) {
+          let { cr }: { cr: number } = enemy;
+          cr = +cr;
+          cr = crPushAlly > 0 ? cr + crPushAlly : cr;
+          cr = crPush > 0 ? cr - crPush : cr;
+          cr = crBonus > 0 ? (cr * 100) / (crBonus + 100) : cr;
+          let crMin = (cr - 5) / 100;
+          let crMax = (cr + 5) / 100;
+          if (enemy.outspeed) {
             if (speedDown) {
-              crMin = parseFloat(crMin) * 0.7;
-              crMax = parseFloat(crMax) * 0.7;
+              crMin *= 0.7;
+              crMax *= 0.7;
             }
-            crMin = parseFloat(crMin) + 1;
-            crMax = parseFloat(crMax) + 1;
+            crMin += 1;
+            crMax += 1;
           }
+
           const speedmin = Math.round(crMin * baseSpeed);
           const speedmax = Math.round(crMax * baseSpeed);
-          const speedRange = `${Math.round(speedmin)}-${Math.round(speedmax)}`;
+          const speedRange = `${speedmin}-${speedmax}`;
           content += ` - ${speedRange} ${this.$t('speed')}`;
         }
         content += enemy.counter ? ` - ${this.$t('setCounter')}` : '';
@@ -376,22 +346,14 @@ export default {
       }
       return content;
     },
-    formatHp(num) {
-      if ($('#locale-changer :selected').val() === 'cn') {
-        return Math.abs(num) > 9999
-          ? Math.sign(num) * (Math.abs(num) / 10000).toFixed(2) + this.$t('formatHpK')
-          : Math.sign(num) * Math.abs(num);
+    formatHp(num: number): number | string {
+      let numFormated = num > 999 ? num / 1000 + (this.$t('formatHpK') as string) : num;
+      if ($('#locale-changer :selected').val() === 'cn' || $('#locale-changer :selected').val() === 'tw') {
+        numFormated = num > 9999 ? num / 10000 + (this.$t('formatHpK') as string) : num;
       }
-      if ($('#locale-changer :selected').val() === 'tw') {
-        return Math.abs(num) > 9999
-          ? Math.sign(num) * (Math.abs(num) / 10000).toFixed(2) + this.$t('formatHpK')
-          : Math.sign(num) * Math.abs(num);
-      }
-      return Math.abs(num) > 999
-        ? Math.sign(num) * (Math.abs(num) / 1000).toFixed(1) + this.$t('formatHpK')
-        : Math.sign(num) * Math.abs(num);
+      return numFormated;
     },
-    copyToClipboard() {
+    copyToClipboard(): void {
       if ($('#report')) {
         $('#report').select();
         document.execCommand('copy');
@@ -399,26 +361,28 @@ export default {
         $('#copytoast').toast('show');
       }
     },
-    copyToClipboardSL() {
+    copyToClipboardSL(): void {
       if ($('#report')) {
-        const copyText = document.querySelector('#report');
-        const ML = copyText._value;
+        const copyText = document.querySelector('#report') as HTMLInputElement;
+        const ML = copyText.value;
         const SL = ML.replace(/(\r\n|\n|\r)/gm, ' ');
-        const slcopy = document.getElementById('sl');
-        slcopy.value = SL;
-        slcopy.select();
-        document.execCommand('copy');
-        $('.toast').toast('hide');
-        $('#slcopytoast').toast('show');
+        const slcopy = document.getElementById('sl') as HTMLInputElement;
+        if (slcopy !== null) {
+          slcopy.value = SL;
+          slcopy.select();
+          document.execCommand('copy');
+          $('.toast').toast('hide');
+          $('#slcopytoast').toast('show');
+        }
       }
     },
-    resetForm() {
+    resetForm(): void {
       document.location.reload(true);
       $('.toast').toast('hide');
       $('#resettoast').toast('show');
     },
   },
-};
+});
 </script>
 
 <style>

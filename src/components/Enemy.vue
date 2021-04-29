@@ -37,7 +37,7 @@
           </label>
           <label class="mr-2">
             <input v-model="enemy.counter" type="checkbox" />
-            <img src="assets/images/Counter.png" />
+            <img src="assets/images/Counter.png" alt="" />
           </label>
           <label>
             <input v-model="enemy.immunity" type="checkbox" />
@@ -54,19 +54,31 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import Vue, { PropType } from 'vue';
 import ComponentSelectCharacter from './SelectCharacter.vue';
 import ComponentSelectArtifact from './SelectArtifact.vue';
 
-export default {
+export interface Enemy {
+  name: string;
+  artifact: string;
+  hp: number;
+  cr: number;
+  outspeed: boolean;
+  counter: boolean;
+  immunity: boolean;
+  infos: string;
+}
+
+export default Vue.extend({
   components: {
     SelectCharacter: ComponentSelectCharacter,
     SelectArtifact: ComponentSelectArtifact,
   },
   props: {
-    enemy: Object,
+    enemy: Object as PropType<Enemy>,
     labelHero: String,
     labelArtifact: String,
   },
-};
+});
 </script>

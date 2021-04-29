@@ -22,10 +22,11 @@
   </nav>
 </template>
 
-<script>
+<script lang="ts">
+import Vue from 'vue';
 import MainStore from '../stores/MainStore';
 
-export default {
+export default Vue.extend({
   data() {
     return {
       darkMode: MainStore.data.darkMode,
@@ -33,18 +34,18 @@ export default {
     };
   },
   watch: {
-    darkMode(val) {
+    darkMode(val): void {
       this.toggleDarkMode(val);
     },
   },
   mounted() {
     if (localStorage.getItem('darkMode')) {
-      this.toggleDarkMode(localStorage.getItem('darkMode'));
+      this.toggleDarkMode(localStorage.getItem('darkMode') as string);
     }
   },
   methods: {
-    toggleDarkMode(val) {
-      if (val === true || val === 'true') {
+    toggleDarkMode(val: string): void {
+      if (val === 'true') {
         document.body.classList.add('dark');
         this.darkMode = true;
       } else {
@@ -53,10 +54,10 @@ export default {
       }
       localStorage.setItem('darkMode', val);
     },
-    changeLang() {
+    changeLang(): void {
       localStorage.setItem('langCode', this.$i18n.locale);
-      document.title = this.$t('title');
+      document.title = this.$t('title').toString();
     },
   },
-};
+});
 </script>

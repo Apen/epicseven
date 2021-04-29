@@ -1,29 +1,41 @@
 <template>
-  <select :value="value" class="selectpicker" :title="title" data-live-search="true" data-width="100%" @change="select">
+  <select
+    :value="value"
+    class="selectpicker"
+    :title="title"
+    data-live-search="true"
+    data-width="100%"
+    @change="select($event)"
+  >
     <option v-for="item in artifacts" :key="item._id" :data-tokens="getTokens(item)">
       {{ item.name }}
     </option>
   </select>
 </template>
 
-<script>
+<script lang="ts">
+import Vue from 'vue';
 import $ from 'jquery';
+import 'bootstrap-select';
 import { en } from '../assets/js/en.artifacts';
 import { fr } from '../assets/js/fr.artifacts';
 import { cn } from '../assets/js/cn.artifacts';
 import { tw } from '../assets/js/tw.artifacts';
 import { nicknames } from '../assets/js/nicknames';
 
-export default {
+export default Vue.extend({
   props: ['title', 'value'],
   data() {
     return {
-      artifacts: this.getItems(),
+      artifacts: en,
       nicknames,
     };
   },
+  created() {
+    this.artifacts = this.getItems();
+  },
   watch: {
-    title() {
+    title(): void {
       this.artifacts = this.getItems();
     },
   },
@@ -31,10 +43,11 @@ export default {
     $(this.$el).selectpicker({ title: this.title }).selectpicker('render');
   },
   methods: {
-    select($event) {
-      this.$emit('input', $event.target.value);
+    select($event: Event): void {
+      this.$emit('input', ($event.target as HTMLInputElement).value);
     },
-    getItems() {
+    /* eslint-disable  @typescript-eslint/no-explicit-any */
+    getItems(): Array<any> {
       let artifacts = null;
       switch (this.$i18n.locale) {
         case 'en':
@@ -55,12 +68,12 @@ export default {
       }
       return artifacts;
     },
-    getTokens(item) {
+    getTokens(item: { _id: string }): string {
       if (item._id && nicknames[item._id]) {
         return nicknames[item._id];
       }
       return '';
     },
   },
-};
+});
 </script>
