@@ -11,7 +11,14 @@
           </select>
         </div>
         <div class="custom-control custom-switch">
-          <input id="darkSwitch" v-model="darkMode" type="checkbox" class="form-control custom-control-input" />
+          <input
+            id="darkSwitch"
+            v-model="darkMode"
+            type="checkbox"
+            class="form-control custom-control-input"
+            true-value="true"
+            false-value="false"
+          />
           <label class="custom-control-label" for="darkSwitch">{{ $t('darkMode') }}</label>
         </div>
         <div class="custom-control">
@@ -29,13 +36,13 @@ import MainStore from '../stores/MainStore';
 export default Vue.extend({
   data() {
     return {
-      darkMode: MainStore.data.darkMode,
+      darkMode: MainStore.data.darkMode as string,
       langs: MainStore.data.langs,
     };
   },
   watch: {
-    darkMode(val): void {
-      this.toggleDarkMode(val);
+    darkMode(val: string): void {
+      this.toggleDarkMode(val as string);
     },
   },
   mounted() {
@@ -47,16 +54,16 @@ export default Vue.extend({
     toggleDarkMode(val: string): void {
       if (val === 'true') {
         document.body.classList.add('dark');
-        this.darkMode = true;
+        this.darkMode = 'true';
       } else {
         document.body.classList.remove('dark');
-        this.darkMode = false;
+        this.darkMode = 'false';
       }
       localStorage.setItem('darkMode', val);
     },
     changeLang(): void {
       localStorage.setItem('langCode', this.$i18n.locale);
-      document.title = this.$t('title').toString();
+      document.title = this.$t('title') as string;
     },
   },
 });

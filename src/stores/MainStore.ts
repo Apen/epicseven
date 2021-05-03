@@ -1,6 +1,6 @@
 export default {
   data: {
-    darkMode: false,
+    darkMode: 'false' as string,
     langs: [
       { code: 'en', name: 'English' },
       { code: 'fr', name: 'Français' },
