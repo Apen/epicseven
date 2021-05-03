@@ -169,17 +169,18 @@ export default Vue.extend({
   },
   watch: {
     'firstHero.name': function (val): void {
+      console.log('firstHeroname');
       if (val && localStorage.getItem(val)) {
-        this.firstHero.speed = parseInt(localStorage.getItem(val) as string, 10);
+        Vue.set(this.firstHero, 'speed', parseInt(localStorage.getItem(val) as string, 10));
       } else {
-        this.firstHero.speed = 0;
+        Vue.set(this.firstHero, 'speed', 0);
       }
     },
     'secondHero.name': function (val): void {
       if (val && localStorage.getItem(val)) {
-        this.secondHero.speed = parseInt(localStorage.getItem(val) as string, 10);
+        Vue.set(this.secondHero, 'speed', parseInt(localStorage.getItem(val) as string, 10));
       } else {
-        this.secondHero.speed = 0;
+        Vue.set(this.secondHero, 'speed', 0);
       }
     },
     'firstHero.crBonus': function (): void {
@@ -195,6 +196,7 @@ export default Vue.extend({
       this.updateReport();
     },
     'firstHero.speed': function (val): void {
+      console.log('speed watch');
       if (this.firstHero.name && val) {
         localStorage.setItem(this.firstHero.name, val);
       }
