@@ -169,7 +169,6 @@ export default Vue.extend({
   },
   watch: {
     'firstHero.name': function (val): void {
-      console.log('firstHeroname');
       if (val && localStorage.getItem(val)) {
         Vue.set(this.firstHero, 'speed', parseInt(localStorage.getItem(val) as string, 10));
       } else {
@@ -196,7 +195,6 @@ export default Vue.extend({
       this.updateReport();
     },
     'firstHero.speed': function (val): void {
-      console.log('speed watch');
       if (this.firstHero.name && val) {
         localStorage.setItem(this.firstHero.name, val);
       }

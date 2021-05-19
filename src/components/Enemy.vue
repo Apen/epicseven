@@ -13,7 +13,7 @@
       </div>
       <div class="col-md-3">
         <div class="input-group form-group">
-          <input v-model="enemy.hp" type="number" min="0" class="form-control" />
+          <input v-model.number="enemy.hp" type="number" min="0" class="form-control" />
           <div class="input-group-append">
             <span class="input-group-text">{{ $t('hp') }}</span>
           </div>
@@ -21,7 +21,7 @@
       </div>
       <div class="col-md-3">
         <div class="input-group form-group">
-          <input v-model="enemy.cr" type="number" min="0" class="form-control" />
+          <input v-model.number="enemy.cr" type="number" min="0" class="form-control" />
           <div class="input-group-append">
             <span class="input-group-text">{{ $t('cr') }}</span>
           </div>
