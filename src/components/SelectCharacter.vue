@@ -68,10 +68,10 @@ export default Vue.extend({
       }
       return characters;
     },
-    uniqueMerge(arrays) {
+    uniqueMerge(arrays: Array<any>) {
       const results = {};
       arrays.forEach((arr) => {
-        arr.forEach((item) => {
+        arr.forEach((item: { _id: string; name: string }) => {
           results[item._id] = item;
         });
       });
