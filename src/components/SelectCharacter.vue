@@ -54,19 +54,28 @@ export default Vue.extend({
           characters = en;
           break;
         case 'fr':
-          characters = fr;
+          characters = this.uniqueMerge([en, fr]);
           break;
         case 'cn':
-          characters = cn;
+          characters = this.uniqueMerge([en, cn]);
           break;
         case 'tw':
-          characters = tw;
+          characters = this.uniqueMerge([en, tw]);
           break;
         default:
           characters = en;
           break;
       }
       return characters;
+    },
+    uniqueMerge(arrays) {
+      const results = {};
+      arrays.forEach((arr) => {
+        arr.forEach((item) => {
+          results[item._id] = item;
+        });
+      });
+      return Object.values(results);
     },
     getTokens(item: { _id: string }): string {
       if (item._id && nicknames[item._id]) {
