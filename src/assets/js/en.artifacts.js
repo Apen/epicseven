@@ -120,7 +120,7 @@ export const en = [
   { _id: 'official-levulin-beach-volleyball', name: 'Official Levulin Beach Volleyball' },
   { _id: 'one-year-of-gratitude', name: 'One Year of Gratitude' },
   { _id: 'otherworldly-machinery', name: 'Otherworldly Machinery' },
-  { _id: 'prelude-to-a-new-dawn', name: 'Prelude to a New Dawn' },
+  { _id: 'prelude-to-a-new-era', name: 'Prelude to a New Era' },
   { _id: 'portrait-of-the-saviors', name: 'Portrait of the Saviors' },
   { _id: 'proof-of-valor', name: 'Proof of Valor' },
   { _id: 'prophetic-candlestick', name: 'Prophetic Candlestick' },
