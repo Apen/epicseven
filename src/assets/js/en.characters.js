@@ -23,6 +23,7 @@ export const en = [
   { _id: 'arunka', name: 'Arunka' },
   { _id: 'armin', name: 'Armin' },
   { _id: 'arowell', name: 'Arowell' },
+  { _id: 'arunka', name: 'Arunka' },
   { _id: 'assassin-cartuja', name: 'Assassin Cartuja' },
   { _id: 'assassin-cidd', name: 'Assassin Cidd' },
   { _id: 'assassin-coli', name: 'Assassin Coli' },
