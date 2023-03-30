@@ -339,8 +339,11 @@ export default Vue.extend({
           const speedRange = `${speedmin}-${speedmax}`;
           content += ` - ${speedRange} ${this.$t('speed')}`;
         }
-        content += enemy.counter ? ` - ${this.$t('setCounter')}` : '';
         content += enemy.immunity ? ` - ${this.$t('setImmunity')}` : '';
+        content += enemy.protection ? ` - ${this.$t('setProtection')}` : '';
+        content += enemy.counter ? ` - ${this.$t('setCounter')}` : '';
+        content += enemy.lifesteal ? ` - ${this.$t('setLifesteal')}` : '';
+        content += enemy.injury ? ` - ${this.$t('setInjury')}` : '';
         content += enemy.infos ? ` - ${enemy.infos}` : '';
         content += '\r\n';
       }

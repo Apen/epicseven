@@ -36,12 +36,24 @@
             {{ $t('outspeed') }}
           </label>
           <label class="mr-2">
+            <input v-model="enemy.immunity" type="checkbox" />
+            <img src="assets/images/Immunity.png" alt="" />
+          </label>
+          <label class="mr-2">
+            <input v-model="enemy.protection" type="checkbox" />
+            <img src="assets/images/Protection.png" alt="" />
+          </label>
+          <label class="mr-2">
             <input v-model="enemy.counter" type="checkbox" />
             <img src="assets/images/Counter.png" alt="" />
           </label>
+          <label class="mr-2">
+            <input v-model="enemy.lifesteal" type="checkbox" />
+            <img src="assets/images/Lifesteal.png" alt="" />
+          </label>
           <label>
-            <input v-model="enemy.immunity" type="checkbox" />
-            <img src="assets/images/Immunity.png" />
+            <input v-model="enemy.injury" type="checkbox" />
+            <img src="assets/images/Injury.png" alt="" />
           </label>
         </div>
       </div>
@@ -65,8 +77,11 @@ export interface Enemy {
   hp: number;
   cr: number;
   outspeed: boolean;
-  counter: boolean;
   immunity: boolean;
+  protection: boolean;
+  counter: boolean;
+  lifesteal: boolean;
+  injury: boolean;
   infos: string;
 }
 
