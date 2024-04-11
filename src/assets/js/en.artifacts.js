@@ -1,4 +1,5 @@
 export const en = [
+  { _id: '3f', name: '3F' },
   { _id: 'a-little-queens-huge-crown', name: "A Little Queen's Huge Crown" },
   { _id: 'a-song-for-everybody', name: 'A Song for Everybody' },
   { _id: 'a-symbol-of-unity', name: 'A Symbol of Unity' },
@@ -131,6 +132,7 @@ export const en = [
   { _id: 'official-levulin-beach-volleyball', name: 'Official Levulin Beach Volleyball' },
   { _id: 'old-gardening-shears', name: 'Old Gardening Shears' },
   { _id: 'one-year-of-gratitude', name: 'One Year of Gratitude' },
+  { _id: 'pipette-lance', name: 'Pipette Lance' },
   { _id: 'otherworldly-machinery', name: 'Otherworldly Machinery' },
   { _id: 'portrait-of-the-saviors', name: 'Portrait of the Saviors' },
   { _id: 'pos', name: 'P.O.S' },
@@ -178,6 +180,7 @@ export const en = [
   { _id: 'sphere-of-sadism', name: 'Sphere of Sadism' },
   { _id: 'spirits-breath', name: "Spirit's Breath" },
   { _id: 'spooky-solayu-stories', name: 'Spooky Solayu Stories' },
+  { _id: 'staff-of-ainz-ooal-gown', name: 'Staff of Ainz Ooal Gown' },
   { _id: 'staff-of-wisdom', name: 'Staff of Wisdom' },
   { _id: 'star-of-the-deep-sea', name: 'Star of the Deep Sea' },
   { _id: 'steadfast-gatekeeper', name: 'Steadfast Gatekeeper' },
