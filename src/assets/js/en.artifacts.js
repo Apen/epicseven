@@ -26,6 +26,7 @@ export const en = [
   { _id: 'bastion-of-perlutia', name: 'Bastion of Perlutia' },
   { _id: 'beguiling-wings', name: 'Beguiling Wings' },
   { _id: 'benimarus-tachi', name: "Benimaru's Tachi" },
+  { _id: 'birds-eye-view', name: "Bird's-Eye View" },
   { _id: 'biting-wind-star', name: 'Biting Wind Star' },
   { _id: 'black-hand-of-the-goddess', name: 'Black Hand of the Goddess' },
   { _id: 'blazing-full-moon-trophy', name: 'Blazing Full Moon Trophy' },
